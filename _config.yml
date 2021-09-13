@@ -16,7 +16,7 @@ brand:
 
 
 # Site subpath, e.g. /blog
-url :               "https://watts-college.github.io/"
+url :               "https://watts-college.github.io"
 baseurl:            "/cpp-524-fall-2021"
 course_url:         "http://watts-college.github.io/cpp-524-fall-2021/"
 
