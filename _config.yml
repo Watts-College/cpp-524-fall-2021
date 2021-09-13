@@ -5,7 +5,7 @@
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 
 # Site title and description
-title:              DS4PS
+title:              watts-college
 description:        Intro course in research design
 
 # Header text on the left
@@ -21,7 +21,7 @@ baseurl:            "/cpp-524-fall-2021"
 course_url:         "http://watts-college.github.io/cpp-524-fall-2021/"
 
 github_info:
-    username:          DS4PS # Github location of the course
+    username:          watts-college # Github location of the course
     branch:            master
     website-repo:      cpp-524-fall-2021
     course-repo:       cpp-524-fall-2021
