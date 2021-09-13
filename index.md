@@ -13,14 +13,14 @@ info:
  course_title: Foundations of Program Evaluation Part II
  course_number: CPP 524 
  course_level: Graduate 
- course_website: 'https://canvas.asu.edu/courses/76017'
- course_start_end_dates: January 11 to March 2, 2021  
+ course_website: 'https://canvas.asu.edu/courses/99226'
+ course_start_end_dates: October 13 to December 3, 2021  
  course_prerequisites: CPP 523 or similar regression course
  class_meets_when:  Asynchronous  
  class_meets_where:  'https://asu.zoom.us/j/84210278039'
  review_sessions_when: TBD 
  review_sessions_where: Zoom
- discussion_board_url: 'https://ds4ps.org/cpp-524-spr-2021/help/'
+ discussion_board_url: 'https://watts-college.github.io//cpp-524-fall-2021/help/'
 
 instructor:
 -  name: Jesse Lecy
