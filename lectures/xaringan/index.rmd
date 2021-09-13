@@ -1,0 +1,54 @@
+---
+title: "rtweet-workshop"
+subtitle: "Collecting and analyzing Twitter data"
+author: author
+date: '`r rmdees::title_icons_fa5(twitter = "kearneymw", github = "mkearney")`'
+output:
+  xaringan::moon_reader:
+    css: ["robot", "css/slides.css"]
+    self_contained: no
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+---
+
+
+
+```{r setup, echo = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = FALSE, eval = TRUE, message = FALSE, dpi = 72)
+
+library(icon)      ## for FontAwesome icons (ozunconf17 project!)
+library(emo)       ## for emoji, obvs (github.com/hadley/emo)
+library(tidyverse) ## for data wrangling
+library(assertr)   ## for testing data
+
+```
+
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+
+
+---
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+

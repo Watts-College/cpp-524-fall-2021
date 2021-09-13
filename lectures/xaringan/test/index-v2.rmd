@@ -1,0 +1,65 @@
+---
+title: "The Life & Times of a Reproducible Clinical Project in R"
+author: "Jennifer L Thompson, MPH<br><span style = 'font-size: 50%;'>Vanderbilt University Medical Center<br>Department of Biostatistics + Center for Critical Illness, Brain Dysfunction & Survivorship</span>"
+date: 'R/Medicine 2018<br><br>`r icon::fa("link")` [bit.ly/jlt-rmed2018](https://bit.ly/jlt-rmed2018)<br>`r icon::fa("twitter")` [jent103](https://twitter.com/jent103)'
+output:
+  xaringan::moon_reader:
+    css: ["robot", "slides.css"]
+    self_contained: no
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+    includes:
+      in_header: header.html
+---
+
+
+
+```{r setup, echo = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = FALSE, eval = TRUE, message = FALSE, dpi = 72)
+
+library(icon)      ## for FontAwesome icons (ozunconf17 project!)
+library(emo)       ## for emoji, obvs (github.com/hadley/emo)
+library(tidyverse) ## for data wrangling
+library(assertr)   ## for testing data
+
+```
+
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+???
+
+Some note.
+
+
+---
+
+background-image: url(img/burning-man2.gif)
+background-size: cover; 
+
+cover --> rescales + crops with no empty space
+contain --> rescales only
+
+
+
+---
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
