@@ -35,7 +35,7 @@ header:
 - title: Course Schedule
   url: schedule/
 - title: Yellowdig
-  url: https://canvas.asu.edu/courses/99226/assignments/2552477
+  url: 'https://canvas.asu.edu/courses/99226/assignments/2552477'
 - title: Resources 
   url: resources/
 - title: Review Sessions 
