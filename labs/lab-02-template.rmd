@@ -1,0 +1,137 @@
+---
+output:
+  html_document:
+    theme: readable
+    df_print: paged
+    highlight: tango
+---
+
+```{r setup, include=FALSE}
+# set global doc options:
+# do not include warning messages
+# in the knitted document
+knitr::opts_chunk$set( warning=F, message=F )
+```
+
+# Lab 02 - Equivalence Tests 
+
+**CPP 524**
+
+**YOUR NAME**
+
+---------------
+ 
+**Packages**
+
+```{r}
+library( dplyr )
+library( pander )
+library( ggplot2 )
+```
+
+**Data**
+
+```{r}
+# load lab data
+URL <- "https://github.com/DS4PS/cpp-524-sum-2020/blob/master/labs/data/female-np-entrepreneurs.rds?raw=true"
+dat <- readRDS(gzcon(url( URL )))
+head( dat )
+```
+
+
+
+
+# QUESTIONS
+
+
+## Question 1 
+
+Compare education levels of male and female entrepreneurs.
+
+* Variable Name: **edu.level** 
+* Variable Type: **factor**
+* Survey question: *What is the highest level of education you have achieved?*
+
+
+```{r}
+# code here
+```
+
+**ANSWER:** Explanation here with your **answer highlighted**. 
+
+
+
+## Question 2 
+
+Compare work experience for male and female entrepreneurs.
+
+* Variable Name: **years.prof.exp** 
+* Variable Type: **factor**
+* Survey question: *How many years of professional experience did you have prior to starting the nonprofit?*
+
+
+## Question 3 
+
+Compare success in accessing seed funding for male and female entrepreneurs.
+
+* Variable Name: **seed.funding** 
+* Variable Type: **factor** 
+* Survey question: *Did you receive any SEED FUNDING to start the organization? Seed funding supports development of the organization without requiring deliverables or program activities. Seed funding could also include funding for pilot programs.*
+
+
+## Question 4 
+
+Compare the willingness to take on personal debt for male and female entrepreneurs. 
+
+* Variable Name: **take.on.debt** 
+* Variable Type: **factor** 
+* Survey question: *Have any members of the organization taken on debt to finance the organization? Collectively:*
+
+
+## Question 5 
+
+Compare sources of first year funding for male and female entrepreneurs. 
+
+* Variable Name: **most.imp.fund.source** 
+* Variable Type: **factor** 
+* Survey question: *From the list of funding sources, which has been the MOST important in your first year of operations? Choose one.*
+
+
+## Question 6 
+
+Compare age at the time of nonprofit formation for male and female entrepreneurs. 
+
+* Variable Name: **age** 
+* Variable Type: **numeric** 
+* Survey question: *What was your age when you created the nonprofit?*
+
+ 
+ 
+## Question 7 
+
+Compare income levels prior to starting the nonprofit for male and female entrepreneurs. 
+
+* Variable Name: **income** 
+* Variable Type: **numeric** 
+* Survey question: *Please specify your income range prior to working to create this nonprofit:*
+
+
+
+## Question 8
+
+Based upon these seven contrasts, would you conclude that the resources male and female nonprofit entrepreneurs have at the time of founding were equivalent?
+
+**Q8-A:**
+
+What is the adjusted decision criteria used for contrasts to maintain an alpha of 0.05 for the omnibus test of group equivalence? 
+
+**Q8-B:**
+
+What is the lowest p-value you observed across the seven contrasts? 
+
+**Q8-C:**
+
+Can we claim study group equivalency? Why or why not? 
+
+
+

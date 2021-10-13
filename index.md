@@ -26,27 +26,16 @@ instructor:
 -  name: Jesse Lecy
    title: Professor
    email: jdlecy@asu.edu   
-   office_location: 'https://asu.zoom.us/j/9762065873'
+   office_location: 'https://asu.zoom.us/j/87540573400'
    website_url: http://www.lecy.info/
    github_url: 'https://github.com/lecy' 
    twitter_url: 
    scholar_url: https://scholar.google.com/citations?user=Ir8H4wMAAAAJ&hl=en
    linked_in_url:
    office_hours_time: Flexible
-   office_hours_location:  Zoom
+   office_hours_location:  https://asu.zoom.us/j/87540573400
    office_hours_app_url: 'https://calendly.com/lecy/30min'
--  name: Courtney Stowers
-   title: Instructor
-   email: castower@asu.edu   
-   office_location: 'https://asu.zoom.us/j/7422653906'
-   website_url: 
-   github_url: 'https://github.com/castower' 
-   twitter_url: 
-   scholar_url: 
-   linked_in_url: 'https://www.linkedin.com/in/courtney-stowers/'
-   office_hours_time: Flexible
-   office_hours_location:  Zoom 
-   office_hours_app_url: 'https://calendly.com/courtney-stowers'  
+
    
 
 textbooks:
@@ -59,24 +48,6 @@ textbooks:
 --- 
 
 
-<style> 
-body {
-   font-family: "Roboto", sans-serif;
-}
- 
-p.italic {
-  font-style: italic;
-  color: black !important;
-}
-
-em {
-  color: black !important;
-  }
-
-#fa-icon {
-  font-style: normal;
-}
-</style>
 
 
 
@@ -237,3 +208,25 @@ Please note: the course instructor may from time to time adjust assigned reading
 
 <br>
 <br>
+
+
+
+<style> 
+body {
+   font-family: "Roboto", sans-serif;
+}
+ 
+p.italic {
+  font-style: italic;
+  color: black !important;
+}
+
+em {
+  color: black !important;
+  }
+
+#fa-icon {
+  font-style: normal;
+}
+</style>
+
