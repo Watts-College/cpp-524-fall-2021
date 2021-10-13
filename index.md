@@ -27,13 +27,13 @@ instructor:
    title: Professor
    email: jdlecy@asu.edu   
    office_location: 'https://asu.zoom.us/j/87540573400'
-   website_url: http://www.lecy.info/
+   website_url: 'http://www.lecy.info/'
    github_url: 'https://github.com/lecy' 
    twitter_url: 
-   scholar_url: https://scholar.google.com/citations?user=Ir8H4wMAAAAJ&hl=en
+   scholar_url: 'https://scholar.google.com/citations?user=Ir8H4wMAAAAJ&hl=en'
    linked_in_url:
    office_hours_time: Flexible
-   office_hours_location:  https://asu.zoom.us/j/87540573400
+   office_hours_location:  'https://asu.zoom.us/j/87540573400'
    office_hours_app_url: 'https://calendly.com/lecy/30min'
 
    
