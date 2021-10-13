@@ -220,7 +220,7 @@ The lab asks for you to report on features of the research design and identify c
 
 **Required Reading:**
 
-[Core Concepts in Research Design](../core-concepts) 
+<a class="uk-button uk-button-default" href="../core-concepts">Core Concepts in Research Design</a>
 
 *Gertler, P. J., Martinez, S., Premand, P., Rawlings, L. B., & Vermeersch, C. M. (2016). Impact evaluation in practice. The World Bank.* [[pdf](https://openknowledge.worldbank.org/bitstream/handle/10986/25030/9781464807794.pdf?sequence=2&isAllowed=y)]
 * Chapter 3. Causal Inference and Counterfactuals 
@@ -234,7 +234,15 @@ Reichardt, C. S., & Bormann, C. A. (1994). Using regression models to estimate p
 
 ## Lab 01 
 
+-----------
+
+<a class="uk-button uk-button-default" href="{{page.pdf-root-url}}/labs/lab-01-instructions.docx">INSTRUCTIONS</a>
+
+<a class="uk-button uk-button-primary" href="https://canvas.asu.edu/courses/41395/assignments/955651">SUBMIT</a>
+
 **Due {{page.labs.lab-01}}**
+
+-------------
 
 This lab covers Counterfactual Reasoning with RCTs
 
@@ -251,7 +259,6 @@ Read: *Bingham, R., & Felbinger, C. (2002). Evaluation in practice: A methodolog
 
 Answer the questions in the word document: 
 
-<a class="uk-button uk-button-default" href="{{page.pdf-root-url}}/labs/lab-01-instructions.docx">Lab-01 Instructions</a>
 
 Save it using the naming convention:
 
@@ -259,7 +266,6 @@ Lab-##-LastName.doc
 
 And submit via Canvas. 
 
-<a class="uk-button uk-button-primary" href="https://canvas.asu.edu/courses/41395/assignments/955651">Submit Lab-01</a>
 
 <br>
 <br>
@@ -267,7 +273,16 @@ And submit via Canvas.
 
 ## Final Project Step-01
 
+--------------
+
+<a class="uk-button uk-button-default" href="">INSTRUCTIONS</a>
+
+<a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">SUBMIT</a>
+
 **Due {{page.project.step-01}}**
+
+--------------
+
 
 Your final project in this course is a memo that outlines a proposed research design that would be necessary to measure impact of a policy or program if a Randomized Control Trial is disallowed for practical or financial reasons (pedagogically because it solves many of your internal validity issues - this class is an opportunity to practice quasi-experimental approaches to causal inference). 
 
@@ -279,11 +294,6 @@ This first step is designed to get feedback from the instructor in order to ensu
 
 See page 4 of the project instructions PDF for an example of Step 01 memo format:
 
-<a class="uk-button uk-button-default" href="">Project Instructions</a>
-
-When you are complete:
-
-<a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">Submit Step 01 - Pick Your Topic</a>
 
 <br>
 <br>
