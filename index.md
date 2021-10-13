@@ -17,9 +17,9 @@ info:
  course_start_end_dates: October 13 to December 3, 2021  
  course_prerequisites: CPP 523 or similar regression course
  class_meets_when:  Asynchronous  
- class_meets_where:  'https://asu.zoom.us/j/84210278039'
- review_sessions_when: TBD 
- review_sessions_where: Zoom
+ class_meets_where:  'https://asu.zoom.us/j/87540573400'
+ review_sessions_when: Monday 12pm AZ 
+ review_sessions_where: 'https://asu.zoom.us/j/87540573400'
  discussion_board_url: 'https://watts-college.github.io/cpp-524-fall-2021/help/'
 
 instructor:
