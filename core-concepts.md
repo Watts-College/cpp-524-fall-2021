@@ -71,6 +71,9 @@ Y(t) - Y(c)
 
 The outcome is measured now as a difference of means instead of a change in probabilities of observing success. Thus, we typically care about the **Average Treatment Effects** because it is the easiest thing to measure (the average outcome for the treatment and control groups) and most succinct way to communicate program effectiveness in evaluation studies. 
 
+<br>
+<br>
+  
 ## Important Consideration for Interpretting Impact
 
 The probabalistic nature of causal relationships in social science poses challenges to inference because we will almost always observe some differences in group means. The hard part is determining whether the observed differences are (1) statistically meaningful, i.e. significant, (2) pragmatically meaningful, i.e. large enough effect sizes to warrant investments given a cost-benefit calculation and alternative program models we can fund, and (3) the relationship is causal (think back to the classroom size example where billions were spent reducing class sizes and most schools saw no improvements in test scores). 
@@ -241,6 +244,9 @@ Not all evaluations are the same. Some provide robust and trustworthy estimates 
 
 Statistical signifance tells us the likelihood that the model slope differs from the model null, but it does not tell us if the null is a reasonable counterfactual and adequate steps have been taken to remove bias in the slope. Those both occur at the design phase, not the at the point of model estimation. 
 
+
+<br>
+<br>
 
 ## Internal Validity as a Murder Mystery
 
