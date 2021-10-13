@@ -3,26 +3,26 @@ layout: default
 title: Schedule
 
 canvas: 
-  assignment_url: 'https://canvas.asu.edu/courses/86712/assignments'
+  assignment_url: 'https://canvas.asu.edu/courses/99226/assignments'
 
 labs:
-  lab-01:  'Saturday, May 22nd' 
-  lab-02:  'Saturday, May 29th'
-  lab-03:  'Saturday, June 5th'
-  lab-04:  'Saturday, June 12th'
-  lab-05:  'Saturday, June 19th'
+  lab-01:  'Wednesday, Oct 20th' 
+  lab-02:  'Wednesday, Oct 27th'
+  lab-03:  ''
+  lab-04:  ''
+  lab-05:  ''
   
 project:
-  step-01:  'Tues May 25'
-  step-02:  'Tues June 1'
-  step-03:  'Tues June 8'
-  step-04:  'Tues June 15'
+  step-01:  'Saturday, Oct 23rd'
+  step-02:  ''
+  step-03:  ''
+  step-04:  ''
 
 final: 
-  project:    'Mon June 21'  
-  exam-date:  'Mon June 21  - Fri June 25'  
+  project:    'Sat Nov 27'  
+  exam-date:  'Mon Nov 29  - Fri Dec 3'  
 
-pdf-root-url: "https://github.com/DS4PS/cpp-524-sum-2021/raw/main" 
+pdf-root-url: "https://github.com/Watts-College/cpp-524-fall-2021/raw/main/" 
 
 yellowdig: "https://canvas.asu.edu/courses/86712/assignments/2210979"
 
@@ -81,7 +81,7 @@ No single study is ever definitive and no model produces a flawless estimate of 
 
 Randomized Control Trials (RCTs) are the gold standard in evaluation because they tend to produce the most accurate (least biased) estimates of program impact. But it actually takes a lot less skill and creativity to design an RCT than it does to design a rigorous quasi-experimental study. The tools taught in this course and in CPP 525 Advanced Regression are the things that will differentiate a talented and employable evaluation specialist that is sought out when the programs are high-stakes and stakeholders want actionable information versus a general evaluation specialist that is hired to produce compliance reports that will usually go into a file cabinet and not lead to program improvements or funding re-allocations. 
 
-[Overview of Causality in Regression Studies](https://ds4ps.org/cpp-524-sum-2021/prog-eval/)
+[Overview of Causality in Regression Studies](/prog-eval/)
 
 
 <br>
@@ -90,7 +90,7 @@ Randomized Control Trials (RCTs) are the gold standard in evaluation because the
 
 You have weekly labs, a final project that requires you to design (but not implement) a hypothetical evaluation of a program or policy of your choice), and a low-stakes (10 point) final exam that gives you an opportunity to review and synthesize all of the course content so you can consolidate the information in your brain. 
 
-Note that each week you will submit a lab on Saturday and a step for your research design project on Tuesday. If you keep up with the research design steps and incorporate feedback you can minimize the end-of-semester bottleneck. 
+Each week labs are due Wednesday and a step for your research design project on Saturday. If you keep up with the research design steps and incorporate feedback you can minimize the end-of-semester bottleneck. 
 
 ![](../assets/img/course-cadence.png)
 
@@ -279,7 +279,7 @@ This first step is designed to get feedback from the instructor in order to ensu
 
 See page 4 of the project instructions PDF for an example of Step 01 memo format:
 
-<a class="uk-button uk-button-default" href="{{page.pdf-root-url}}/labs/final-paper-instructions.pdf">Project Instructions</a>
+<a class="uk-button uk-button-default" href="">Project Instructions</a>
 
 When you are complete:
 
