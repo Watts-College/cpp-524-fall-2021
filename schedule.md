@@ -81,7 +81,7 @@ No single study is ever definitive and no model produces a flawless estimate of 
 
 Randomized Control Trials (RCTs) are the gold standard in evaluation because they tend to produce the most accurate (least biased) estimates of program impact. But it actually takes a lot less skill and creativity to design an RCT than it does to design a rigorous quasi-experimental study. The tools taught in this course and in CPP 525 Advanced Regression are the things that will differentiate a talented and employable evaluation specialist that is sought out when the programs are high-stakes and stakeholders want actionable information versus a general evaluation specialist that is hired to produce compliance reports that will usually go into a file cabinet and not lead to program improvements or funding re-allocations. 
 
-[Overview of Causality in Regression Studies](/prog-eval/)
+[Overview of Causality in Regression Studies](../prog-eval/)
 
 
 <br>
