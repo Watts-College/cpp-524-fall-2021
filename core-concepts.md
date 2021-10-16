@@ -268,9 +268,43 @@ One of the first known randomizec control trials was described by Sir Ronald Fis
 
 The question is, **what is the null hypothesis in this experiment**? 
 
-We would be naive to assume that if there is in fact no difference in taste that she will guess all 8 incorrectly. Since there are only two options for each cup she is almost certain to guess some of them correctly by pure chance. So how do we describe the state of the world where the taste of the tea is the same no matter which method is used to prepare it? How many does she need to get correct before we know that the outcome is unlikely driven by luck? 
+We would be naive to assume that if there is in fact no difference in taste that she will guess incorrectly each time. Rather, if she selects 4 cups totally at random she will still guess correctly on some by pure chance. So how do we describe the state of the world where the taste of the tea is the same no matter which method is used to prepare it? How many does she need to get correct before we know that the outcome is unlikely driven by luck? 
 
-Read the following description of the problem set-up: [The Lady Tasting Tea](https://en.wikipedia.org/wiki/Lady_tasting_tea)
+See more details here: [The Lady Tasting Tea](https://en.wikipedia.org/wiki/Lady_tasting_tea)
+
+```
+Number of ways to make N correct guesses if we select 4 out of 8 cups:  
+N:
+0	  oooo	                               1 × 1 = 1
+1	  ooox, ooxo, oxoo, xooo	             4 × 4 = 16
+2	  ooxx, oxox, oxxo, xoxo, xxoo, xoox	 6 × 6 = 36
+3	  oxxx, xoxx, xxox, xxxo	             4 × 4 = 16
+4	  xxxx	                               1 × 1 = 1
+
+Total possible outcomes:	70
+```
+
+What is our decision rule for determining her conjecture is credible? Which outcomes represent those that we would not expect by pure chance? 
+
+Guessing 3/4 cases correctly seems like reasonable evidence, right? But since we have 8 trials the likelihood of observing this outcome by chance is:
+
+```
+16/70  =  0.23
+```
+
+If we expect this outcome in approximately 1/4 of the experiments where there is no difference between in taste then would this be a credible amount of evidence? 
+
+The only outcome that would meet the convention of alpha < 0.05 would be guessing correctly 4/4 times: 
+
+```
+1/70  =  0.01 
+```
+
+Combinatorics is the basis for hypothesis-testing. The null hypothesis helps us build a model of what the world would look like when the intervention has no impact (the order of mixing tea and milk does not change the taste). This model is our counterfactual world. 
+
+Our decision criteria (alpha < P) reflects how much uncertainty we are willing to accept when seeking support for the program and rejecting the view that the world conforms to the null hypothesis (no program impact). 
+
+----------------
 
 Consider a slightly easier problem. A friend tells you that he is psychic and can use his mind to see what is behind walls. You just so happen to be watching Let's Make a Deal, and they are playing the game with 3 doors that hide 2 goats and 1 car. The contestant picks a door and wins the prize behind it. 
 
