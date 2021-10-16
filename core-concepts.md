@@ -166,10 +166,10 @@ We can reconstruct each group mean as follows:
 
 ```
 C: b0 = comparison group in time=1
-A: b0 + b2 = treatment group in time=1
+A: b0 + b1 = treatment group in time=1
 D: b0 + b2 = control group in time=2
 B: b0 + b1 + b2 + b3 = actual group outcome for treatment in time=2
-b0 + b1 + b2 = counterfactual group outcome (no treatment effects)
+b0 + b1 + b2 = counterfactual treatment group (expected outcome if there are no treatment effects)
 ```
 
 Each coefficient tests the following: 
