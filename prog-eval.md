@@ -60,8 +60,35 @@ Just listen to this summary of current knowledge on the topic, then try to succi
 <iframe width="560" height="315" src="https://www.youtube.com/embed/OvDuBVBoV3Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <br>
-<br>
 
+The **theory of change** is a succinct way of represeting a causal story. Our statistical models used to test a theory are usually more parsimonious than reality: 
+
+```  
+Mental Health = b0 + b1 * Drinks_Coffee_Dummy + e     # binary model 
+Mental Health = b0 + b1 * Cups_Per_Day + e            # level analysis
+```
+
+But the actual story is usually more complicated. The statistical model is a black box where we are testing whether an intervention matters. The theory of change breaks open the black box to explore the causal pathways to understand exactly why something matters. 
+  
+For example, if our statistical model leads us to conclude that coffee improves mental health there could be myriad explanations for the specific pathways at play.  
+
+```
+(1) coffee --> motivation --> does not fall behind at work --> higher levels mental health 
+(2) coffee --> antioxidants --> less likely to be sick --> more energy --> higher levels of mental health 
+```
+
+The statistical model is useful for policy-makers (or physicians in this example) because they need to know if they should fund or prescribe specific behaviors. Statistical models coupled with good research design help identify the **average effects** of an intervention on a population (on average, how much does mental health differ between those that drink coffee and those that do not?).
+  
+Evaluation models are helpful for organizations in that they need to communicate impact to stakeholders. But they are less helpful when trying to improve programs. 
+
+For example, if the impact of coffee on mental health comes primarily from (1) above then the program should focus on other ways to improve self-efficacy and a sense of personal agency. If the primary causal pathway is (2) above then the program should focus on things like diet and exercise. 
+
+Most organizations do not have well-developed theories of change. For example, it is very rare for managers to [manage with data](pubs/duhigg-fludd-theory-of-change.pdf). 
+
+If you want to gather evidence that a current program is working use evaluation frameworks. If you want to help organizations improve programs the theory of change is your best tool. 
+
+<br>
+<br>
 
 
 
