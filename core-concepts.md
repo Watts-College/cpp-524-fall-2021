@@ -274,6 +274,7 @@ See more details here: [The Lady Tasting Tea](https://en.wikipedia.org/wiki/Lady
 
 ```
 Number of ways to make N correct guesses if we select 4 out of 8 cups:  
+
 N:
 0	  oooo	                                1 × 1 = 1
 1	  ooox, ooxo, oxoo, xooo	             4 × 4 = 16
@@ -352,7 +353,7 @@ When describing the state of the world where the treatment doesn't matter (tea t
 
 We must convert our counterfactual view of the world into a meaningful null hypothesis that describes a set of outcomes that fail to support our theory of interest (the program works) and a set of outcomes that supports our theory (those unlikely to occur through chance if the program has no impact).
 
-More generally we need to think about what patterns in data we expect to see if the program is having an impact, and what patterns we expect to see if it is not. Having these things in mind will help you identify the best models that capture your research question most precisely. 
+More generally **we need to think about what patterns in data we expect to see if the program is having an impact, and what patterns we expect to see if it is not**. Having these things in mind will help you identify the best models that capture your research question most precisely. 
 
 The hypothesis test merely allows us to create some criteria that we use to determine if the outcome we observe is expected (is not so extreme that we would expect to observe it in less than 5% of cases if the null hypothesis were true). 
 
