@@ -275,11 +275,11 @@ See more details here: [The Lady Tasting Tea](https://en.wikipedia.org/wiki/Lady
 ```
 Number of ways to make N correct guesses if we select 4 out of 8 cups:  
 N:
-0	  oooo	                               1 × 1 = 1
+0	  oooo	                                1 × 1 = 1
 1	  ooox, ooxo, oxoo, xooo	             4 × 4 = 16
 2	  ooxx, oxox, oxxo, xoxo, xxoo, xoox	 6 × 6 = 36
 3	  oxxx, xoxx, xxox, xxxo	             4 × 4 = 16
-4	  xxxx	                               1 × 1 = 1
+4	  xxxx	                                1 × 1 = 1
 
 Total possible outcomes:	70
 ```
