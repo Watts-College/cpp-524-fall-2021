@@ -347,7 +347,11 @@ This week introduces the notion of counterfactual reasoning using quasi-experime
   - Post-test only design 
   - Reflexive design 
 
+**Review Use of Dummy Variables in Regression:** 
 
+[Dummy Variables]({{page.pdf-root-url}}/pubs/hypotheses-tests-with-dummy-variables.pdf)  
+
+  
 **Suggested Reading:**
 
 Cook, T. D., Scriven, M., Coryn, C. L., & Evergreen, S. D. (2010). Contemporary thinking about causation in evaluation: A dialogue with Tom Cook and Michael Scriven. American Journal of Evaluation, 31(1), 105-117. [ [LINK]({{page.pdf-root-url}}/pubs/conversation-with-tom-cook-and-michael-scriven.pdf) ]
