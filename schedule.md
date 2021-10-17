@@ -350,7 +350,8 @@ This week introduces the notion of counterfactual reasoning using quasi-experime
 **Review Use of Dummy Variables in Regression:** 
 
 * [Treatment as Levels (amount)](https://ds4ps.org/cpp-523-spr-2020/lectures/dummy-variables.html)  
-* [Treatment as Discrete (yes/no)]({{page.pdf-root-url}}/pubs/hypotheses-tests-with-dummy-variables.pdf)    
+* [Treatment as Discrete (yes/no)]({{page.pdf-root-url}}/pubs/hypotheses-tests-with-dummy-variables.pdf)   
+* [Discussion](https://github.com/Watts-College/cpp-523-fall-2021/issues/12)  
 
 <br> 
   
