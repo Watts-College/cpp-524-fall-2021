@@ -339,19 +339,20 @@ This week introduces the notion of counterfactual reasoning using quasi-experime
   - Pre-study equivalence  
   - Tests for non-random attrition  
 
-<br>
-
 * [**Varieties of the Counterfactual**]({{page.pdf-root-url}}/lectures/p-03-varieties-of-counterfactuals.pdf)
 
   - Pre-post with comparison group design  
   - Post-test only design 
   - Reflexive design 
 
+<br>
+
 **Review Use of Dummy Variables in Regression:** 
 
 * [Treatment as Levels (amount)](https://ds4ps.org/cpp-523-spr-2020/lectures/dummy-variables.html)  
 * [Treatment as Discrete (yes/no)]({{page.pdf-root-url}}/pubs/hypotheses-tests-with-dummy-variables.pdf)    
 
+<br> 
   
 **Suggested Reading:**
 
