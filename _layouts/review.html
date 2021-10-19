@@ -9,10 +9,13 @@ layout: default
 
 
 
-
+{% assign weeknumber = 1 %}
+  
 {% for item in page.session %}
 
-<h2> Session {% increment sessioncount | plus:1 %} - {{ item.date }} </h2>
+<h2> Session {{ weeknumber }} - {{ item.date }} </h2> 
+
+<!-- <h2> Session {% increment sessioncount | plus:1 %} - {{ item.date }} </h2>  -->
   
 <p align="center">
 
@@ -38,7 +41,8 @@ layout: default
   
 </p>
 
-
+{% assign weeknumber = weeknumber | plus:1 %}
+  
 <br>
 <br>
 <hr>
