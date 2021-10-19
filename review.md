@@ -10,13 +10,12 @@ session:
   date:  'Mon, Oct 18'  
   video: 'https://asu.zoom.us/rec/share/4IwhgIgIiIt_52FfzwhyzELj3ZqEiUAsyr7y2Kqw4iPsX8dexaVFx-7DA6nfGL30.ICDRozhbAOF3q4VK'
   password: '9!hdS$Gr'
-  sample-code: '' 
-  session-code: '' 
 - week2:
   date:  'Mon Oct 25'  
   video: ''
   password: ''
-
+  sample-code: '' 
+  session-code: '' 
 
 
 ---
