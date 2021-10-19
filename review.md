@@ -39,13 +39,12 @@ Live review sessions will be held each week in order to:
 
 
 > **MONDAYS**    
-> **6pm AZ time** 
+> **12pm AZ time** 
 
-<a href='https://asu.zoom.us/j/84210278039' target=""> <button class="zoom">JOIN ZOOM MEETING</button></a>
+<a href='https://asu.zoom.us/j/87540573400' target=""> <button class="zoom">JOIN ZOOM MEETING</button></a>
 
 <br>
 
-> **Add to your calendar:** <a target="_blank" href="https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=NG9qa3FpZmxhZmo0MGFqYzJkNmhsdWNodTRfMjAyMTAxMTlUMDEwMDAwWiBqZGxlY3lAbQ&amp;tmsrc=jdlecy%40gmail.com&amp;scp=ALL"><img border="0" src="https://www.google.com/calendar/images/ext/gc_button1_en.gif"></a>
 
 <br> 
 <hr>
@@ -58,7 +57,6 @@ For those that cannot attend recordings of each session will be posted below.
 
 Feel free to schedule virtual office hours as well.   
 
-* Courtney Stowers: [AVAILABILITY](https://calendly.com/courtney-stowers)
 * Jesse Lecy: [AVAILABILITY](https://calendly.com/lecy/30min)
 
 
