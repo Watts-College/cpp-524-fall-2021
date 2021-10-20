@@ -275,7 +275,7 @@ And submit via Canvas.
 
 --------------
 
-<a class="uk-button uk-button-default" href="{{pdf-root-url}}final-project/final-paper-instructions.pdf">INSTRUCTIONS</a>
+<a class="uk-button uk-button-default" href="{{page.pdf-root-url}}final-project/final-paper-instructions.pdf">INSTRUCTIONS</a>
 
 <a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">SUBMIT</a>
 
