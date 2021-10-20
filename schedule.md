@@ -860,6 +860,8 @@ The **Final Lab** consists of a
 
 <a class="uk-button uk-button-default" href="../labs/lab-05-diff-in-diff.html">Lab-05 Instructions</a>
 
+[RMD TEMPLATE (right click and save)](https://watts-college.github.io/cpp-524-fall-2021/labs/lab-05-template.rmd)
+
 <a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">Submit Lab</a>
 
 <hr>
