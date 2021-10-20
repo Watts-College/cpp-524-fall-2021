@@ -909,7 +909,7 @@ Some estimators will be valid in this context (will accurately capture program e
 
 **Due {{page.final.project}}**
 
-[Assignment Instructions]({{page.pdf-root-url}}//labs/final-paper-instructions.pdf)
+<a class="uk-button uk-button-default" href="{{page.pdf-root-url}}final-project/final-paper-instructions.pdf">INSTRUCTIONS</a>
 
 Choose a well-established program that has a clear goal, a clear scope, and where you expect to achieve impact in a relatively short time frame (a few years). The point of the assignment is to practice thinking through and communicating important evaluation considerations. 
 
