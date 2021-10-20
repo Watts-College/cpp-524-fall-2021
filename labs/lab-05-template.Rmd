@@ -1,5 +1,5 @@
 ---
-title: "Lab Instructions"
+title: "Lab 5"
 output:
   html_document:
     theme: readable
@@ -7,9 +7,6 @@ output:
     highlight: tango
     toc: yes
     toc_float: no
-    css: 'lab-instructions.css'
-    includes:
-      after_body: 'footer.html'
 ---
 
 ```{r setup, include=FALSE}
@@ -19,143 +16,9 @@ knitr::opts_chunk$set( echo=T, message=F, warning=F, image.width=10)
 
 
 
-# Overview
-
-This lab is loosely based on results from:
-
-> Bingham, R., & Felbinger, C. (2002). *Evaluation in practice: A methodological approach.* CQ Press.
-
-[CH-05: Improving Cognitive Ability in Chronically Deprived Children](https://ds4ps.org/cpp-524-sum-2021/pubs/eval-in-practice-CH5-randomized-control-trial.pdf)
-
-The treatment is nutrition support and specialized tutoring for low-SES students in a poor neighborhood in Peru. The outcome is a standardized measure of academic ability. 
-
-Instead of four distinct treatment groups and five time periods this lab will use one treatment group, one control group, and one comparison group (the high socio-economic status students). 
-
-The treatment group starts treatment in the first time period and continues to receive it in periods 2 and 3 in the study. Neither the control group nor the comparison group receive the treatment at any point. 
-
-![](figures/diff-in-diff-lab.png)
 
 
 
-
-
-```{r, fig.height=8, fig.width=8, eval=F, echo=F}
-
-# CODE TO GENERATE A SYNTHETIC DATASET
-
-# -----------------------------------------------
-#     &nbsp;       time0   time1   time2   time3 
-# --------------- ------- ------- ------- -------
-#  **high.ses**    -0.22   1.44    3.15    4.61  
-# 
-#  **treatment**   -1.76   -0.72   2.19    3.34  
-# 
-#   **control**    -1.76   -0.65   0.64      2   
-# -----------------------------------------------
-  
-g.hs.0 <- -0.12
-g.hs.1 <-  1.29
-g.hs.2 <-  2.89
-g.hs.3 <-  4.45
-n.hs <- 28
-
-g.t.0 <- -1.80
-g.t.1 <- -0.82
-g.t.2 <-  1.75
-g.t.3 <-  3.21
-n.treat <- 47
-
-g.c.0 <- -1.79
-g.c.1 <- -0.77 
-g.c.2 <-  0.55
-g.c.3 <-  1.93
-n.control <- 90
-
-HS0 <- g.hs.0 + rnorm( n=n.hs, sd=1.15 ) %>% sort()
-HS1 <- g.hs.1 + rnorm( n=n.hs, sd=1.15 ) %>% sort()
-HS2 <- g.hs.2 + rnorm( n=n.hs, sd=1.15 ) %>% sort()
-HS3 <- g.hs.3 + rnorm( n=n.hs, sd=1.15 ) %>% sort()
-
-T0 <- g.t.0 + rnorm( n=n.treat, sd=1.15 ) %>% sort()
-T1 <- g.t.1 + rnorm( n=n.treat, sd=1.15 ) %>% sort()
-T2 <- g.t.2 + rnorm( n=n.treat, sd=1.15 ) %>% sort()
-T3 <- g.t.3 + rnorm( n=n.treat, sd=1.15 ) %>% sort()
-
-C0 <- g.c.0 + rnorm( n=n.control, sd=1.15 ) %>% sort()
-C1 <- g.c.1 + rnorm( n=n.control, sd=1.15 ) %>% sort()
-C2 <- g.c.2 + rnorm( n=n.control, sd=1.15 ) %>% sort()
-C3 <- g.c.3 + rnorm( n=n.control, sd=1.15 ) %>% sort()
-
-
-
-ability.hs        <- c( HS0, HS1, HS2, HS3 )
-ability.treatment <- c( T0, T1, T2, T3 )
-ability.control   <- c( C0, C1, C2, C3 )
-
-
-# Then create a set of group vectors, in this case 3 groups and 4 time periods.
-
-# sample size:
-# hs: 28 x 4 time periods
-# treat: 47 x 4 time periods
-# control: 90 x 4 time periods
-
-period.labels <- c("time0","time1","time2","time3")
-
-high.ses <- rep( "high.ses", length(ability.hs) )
-study.period.hs <- rep( period.labels, each=n.hs )
-
-treat <- rep("treatment", length(ability.treatment))
-study.period.treat <- rep( period.labels, each=n.treat )
-
-control <- rep("control", length(ability.control))
-study.period.control <- rep( period.labels, each=n.control )
-
-
-d1 <- data.frame(  ability=ability.hs, 
-                   group=high.ses, 
-                   time=study.period.hs )
-d2 <- data.frame(  ability=ability.treatment, 
-                   group=treat,       
-                   time=study.period.treat )
-d3 <- data.frame(  ability=ability.control, 
-                   group=control,       
-                   time=study.period.control )
-
-# with all three groups 
-d <- rbind( d1, d2, d3 )
-
-# set factor levels 
-d$group <- factor( d$group, 
-                   levels=c("high.ses","treatment","control"))
-
-tapply( d$ability, list(d$group,d$time), mean ) %>% 
-  round(2) %>% 
-  pander()
-  
-
-
-
-t <- tapply( d$ability, list(d$group,d$time), mean )
-
-x <- 0:3
-plot.new()
-plot.window( xlim=c(0,3), ylim=c(-2,5) )
-abline( h=-2:5, lty=2, col="gray80" )
-points( x, t[1,], type="b", pch=19, col="steelblue", cex=3 )
-points( x, t[2,], type="b", pch=19, col="darkred", cex=3 )
-points( x, t[3,], type="b", pch=19, col="steelblue", cex=3 )
-axis( side=1, at=0:3 )
-axis( side=2, las=1 )
-title( xlab="Study Periods", ylab="Academic Performance" )
-title( main="Average Outcomes of Study Groups" )
-```
-
-
-```{r, eval=F, echo=F}
-# saveRDS( d, "data/counterfactuals.rds" )
-# write.csv( d, "data/counterfactuals.csv", row.names=F )
-```
 
 
 
@@ -182,6 +45,7 @@ s.type="html"
 
 
 ```{r, eval=F, echo=F}
+# run this chunk to preview stargazer tables prior to knitting
 s.type="text"
 ```
 
@@ -195,20 +59,6 @@ d$group <- factor( d$group,
                    levels=c("high.ses","treatment","control"))
 ```
 
-
-Sample sizes for each group in the panel:
-
-```{r}
-table( d$group,d$time ) %>% pander()
-```
-
-Group means in each time period: 
-
-```{r}
-tapply( d$ability, list(d$group,d$time), mean ) %>% 
-  round(2) %>% 
-  pander()
-```
 
 
 
@@ -764,35 +614,26 @@ stargazer( m, type=s.type,
 
 **Do we want it to be significant or not?**
 
-<br>
-<br>
 
 
----
 
 
-<br>
-
-# Submission Instructions
-
-You can complete the lab in MS Word or as an RMD file. 
-
-<hr> 
-
-If you are completing the lab in R Studio remember to:
-
-* knit your RMD file to generate your rendered HTML file. 
-* name your files according to the convention: **Lab-##-LastName.Rmd**.
-* show your solution, include your code.
-* format your regression tables using stargazer 
-* bold your answers. 
-* do NOT print excessive output (like a full data set).
-* follow appropriate style guidelines (spaces between arguments, etc.).
 
 
-<hr> 
 
-Login to Canvas at <http://canvas.asu.edu> and navigate to the assignments tab in the course repository. Upload your DOC or HTML+RMD files to the appropriate lab submission link.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -800,8 +641,6 @@ Login to Canvas at <http://canvas.asu.edu> and navigate to the assignments tab i
 
 -----
 
-
-<br>
 <br>
 
 
