@@ -275,7 +275,7 @@ And submit via Canvas.
 
 --------------
 
-<a class="uk-button uk-button-default" href="">INSTRUCTIONS</a>
+<a class="uk-button uk-button-default" href="{{ pdf-root-url }}final-project/final-paper-instructions.pdf">INSTRUCTIONS</a>
 
 <a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">SUBMIT</a>
 
@@ -290,7 +290,7 @@ Your final project in this course is a memo that outlines a proposed research de
 
 For the first step of your project you will fill out a one-page form to describe your proposed study with details on the program you will evaluate, the outcome of interest, and the population targetted by the program. 
 
-This first step is designed to get feedback from the instructor in order to ensure you have picked an appropriate topic for the assignment. This is graded as a pass / fail. 
+This first step is designed to get feedback from the instructor in order to ensure you have picked an appropriate topic for the assignment.  
 
 See page 4 of the project instructions PDF for an example of Step 01 memo format:
 
