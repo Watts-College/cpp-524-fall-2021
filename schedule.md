@@ -864,7 +864,7 @@ Some estimators will be valid in this context (will accurately capture program e
   
 <a class="uk-button uk-button-default" href="../labs/lab-05-diff-in-diff.html">Lab-05 Instructions</a>
 
-[RMD TEMPLATE](https://watts-college.github.io/cpp-524-fall-2021/labs/lab-05-template.rmd)
+<a class="uk-button uk-button-default" href="../labs/lab-05-template.rmd">RMD Template</a>
 
 <a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">Submit Lab</a>
 
