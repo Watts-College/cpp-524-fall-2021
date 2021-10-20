@@ -8,15 +8,15 @@ canvas:
 labs:
   lab-01:  'Wednesday, Oct 20th' 
   lab-02:  'Wednesday, Oct 27th'
-  lab-03:  ''
-  lab-04:  ''
-  lab-05:  ''
+  lab-03:  'Wednesday, Nov 3rd'
+  lab-04:  'Wednesday, Nov 10th'
+  lab-05:  'Wednesday, Nov 17th'
   
 project:
   step-01:  'Saturday, Oct 23rd'
-  step-02:  ''
-  step-03:  ''
-  step-04:  ''
+  step-02:  'Saturday, Oct 30th'
+  step-03:  'Saturday, Nov 6th'
+  step-04:  'Saturday, Nov 13th'
 
 final: 
   project:    'Sat Nov 27'  
