@@ -389,12 +389,7 @@ We rarely have the resources or opportunity to utilize Randomized Control Trials
 
 <a class="uk-button uk-button-default" href="../labs/lab-02-equivalence-tests.html">Lab-02 Instructions</a>
 
-<br> 
-
 <a class="uk-button uk-button-default" href="https://raw.githubusercontent.com/Watts-College/cpp-524-fall-2021/main/labs/lab-02-template.rmd">Lab-02 RMD TEMPLATE</a>
-
-
-<br>
 
 <a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">Submit Lab</a>
 
