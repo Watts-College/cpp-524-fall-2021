@@ -12,11 +12,15 @@ session:
   password: '9!hdS$Gr'
 - week2:
   date:  'Mon Oct 25'  
+  video: 'https://youtu.be/yqbxhY_eIXk'
+  password: ''
+  sample-code: 'https://www.dropbox.com/s/lm2g0jlzlo14zu9/tests-for-group-equivalence.pdf?dl=0' 
+- week3:
+  date:  'Mon Nov 1st'  
   video: ''
   password: ''
   sample-code: '' 
   session-code: '' 
-
 
 ---
 
