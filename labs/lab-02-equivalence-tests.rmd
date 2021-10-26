@@ -219,7 +219,7 @@ https://www.washingtonpost.com/business/behavioral-economics-show-that-women-ten
 
 https://www.vox.com/2018/10/31/17960156/what-is-the-glass-cliff-women-ceos
 
-*L. Camarena, M. Feeney, & J. Lecy: "Nonprofit Entrepreneurship: The Landscape of Gendered Leadership." Working paper.*
+*Camarena, L., Feeney, M. K., & Lecy, J. (2021). Nonprofit Entrepreneurship: Gender Differences in Strategy and Practice. Nonprofit and Voluntary Sector Quarterly.* [**PDF**](../pubs/camarena-et-al-2021.pdf)
 
 <br>
 
@@ -449,59 +449,103 @@ Randomization produces statistically equivalent treatment and control groups, no
 
 The contrast, then, is a **comparison of group means with a test for significance**. 
 
-Contrasts are typically reported in a table by listing the two means, reporting their differences, and either reporting p-values associated with the differences or including starts that signal significant differences. *In some cases the t-statistic is reported instead of the p-value, but the rule of thumb is that a t-stat over 2 implies statistical significance at the alpha=0.05 level (a 95% confidence interval).* 
+Contrasts are typically reported in a table by listing the two means, reporting their differences, and either reporting p-values associated with the differences or including starts that signal significant differences. 
 
-![](figures/group-equivalence-table.png)
+In some cases the t-statistic is reported instead of the p-value, but the rule of thumb is that a **t-stat greater than 2** implies statistical significance at the alpha=0.05 level (a 95% confidence interval). *There are caveats to the rule of thumb (it assumes a large sample size, for example), but we use the default 1.96 value in confidence intervals because it is the t-value associated with a 95% confidence interval, so any t-value greater than that suggests the p-value is less than 0.05.*
 
-If groups are equivalent we should expect that tests show no meaningful differences across a set of measures that describe the study population. They are typically presented in tabular form like this table below describing villages that participated in an economic development program and the villages they have been matched to for comparison. If the matching worked then we should have a group that is identical to the treatment group – no significant differences exist. 
 
-Randomization *almost always* produces statistically identical treatment and control groups, but there are other quasi-experimental techniques that are used to generate **balanced groups**, meaning groups that have no observed differences in the traits that are measured and reported in the data.
+Randomization *almost always* produces statistically equivalent treatment and control groups. We can also use other quasi-experimental techniques to generate **balanced groups**, meaning groups that have no observed differences in the traits that are measured and reported in the data. Randomization is preferable because it ensures balance across all **measured and unmeasured traits**, not just the ones we have data on. 
 
-It is important to note that these approaches can generate subsamples that are balanced on observed characteristics, but randomization ensures that groups are balanced on both observed and unobserved characteristics. 
-
-The problem with omitted variables is we don't always know what they even are, so it's hard to ensure you have included ALL variables that might matter in a regression. Since randomization produces balance in unobserved traits it fixes omitted variable bias problems that you were not even aware you had! Which is why RCTs are "the gold standard" in causal inference and astute policy-makers will look for convergence in results across several quasi-experimental studies before trusting the inferences. 
+The problem with omitted variables is we don't always know what they even are, so it's hard to ensure you have ALL variables that might matter in a regression. Since randomization produces balance in unobserved traits it fixes omitted variable bias problems that you were not even aware you had! Which is why RCTs are "the gold standard" in causal inference and astute policy-makers will look for convergence in results across several quasi-experimental studies before trusting the inferences. 
 
 <br>
 
 
 
-## Contrasts with Categorical Variables 
+## Tests for Independence of Variables 
 
 
-When examining group composition it is common to include traits like race and gender that are categorical and not numerical measures. 
+**Two Continuous Variables**
 
-T-tests are used to conduct a contrasts when measures are continuous, but they do not work when the variable is categorical (how would you calculate the average of four categories of race?).
-
-When variables are categorical we will instead use a chi-square test. It is a common **test for independence of factor levels** in statistics. 
-
-**Tests for independence**
-
-What do we mean by a test for the independence of two variables? 
 
 Recall the meaning of statistical significance in the regression context. If the slope coefficient is significant then knowing information about the treatment (milligrams of caffeine consumed) should give you information about the outcome (heart rate). 
+
+If we know that an individual has received 425 mg of caffeine would 90 (the sample average) or 107 be a better guess of their actual heart rate? 
 
 ![](figures/yhat-and-significance.png)
 
 
-Heart rate depends on caffeine intake if the two variables are related. 
+Heart rate depends on caffeine intake if the two variables are related in some way. 
 
 If we have no information about caffeine intake of each participant then our best guess for a person's heart rate is the average heart rate of all people in the sample (the blue line, y-bar). 
 
 If our model is meaningful (the slope is statistically significant) then our best guess for a person's heart rate is the average of all individuals that consumed the same amount of caffeine, or the predicted value of Y for a level of X (the point on the red regression line). 
 
-When factors are independent then knowing additional information about X tells us nothing about Y. In the case on the left we could do just as well guessing the average heart rate for each case instead of using the regression line. 
+If heart rate does NOT depend on caffeine the variables are **independent**.  
 
-When factors are dependent, then information about X should tell us something about the expected value of Y. The regression line on the right is a much better estimate of heart rate for most cases than the average heart rate of the group (the blue line). 
+When two variables are independent then knowing additional information about X tells us nothing about Y. In the case on the left we could do just as well guessing the heart rate for each individual using the average for the entire group instead of using the regression line. 
+
+When variables are correlated, then information about X should tell us something about the expected value of Y. The regression line on the right is a much better estimate of heart rate for most cases than the average heart rate of the group (the blue line). 
 
 ![](figures/predicted-y.png)
 
-For any given individual this distance from their actual heart rate to the regression line (red line) should be shorter than the distance from their actual heart rate to the mean (blue line). The improvement of the best guess using the regression line over simply using the sample mean for all individuals is the variance that is "explained" by the model.  
+In other words, saying that **Caffeine and Heart Rate are independent** is equivalent to saying **the slope b1 representing the relationship between caffeine and heart rate is zero**, i.e. not statistically significant (or more precisely that a high p-value does not allow us to reject that null that the slope is zero). 
+
 
 ![](figures/explained-variance.png)
 
+The **variance explained** measure R-square gives some sense of how much the prediction would improve based upon the model. 
+
+For the prediction to improve the distance from someone's actual heart rate to the regression line (red line) should be shorter than the distance from their actual heart rate to the mean (blue line). 
+
+The improvement of the best guess using the regression line over the best guess using the sample mean is the variance that is "explained" by the model.  
+
 **Independence of categorical variables**
 
-So let's apply this same predictive reasoning to understand the meaning of a test for independence. 
+It is common for studies to examine traits like race and gender that are categorical, not continuous, measures. 
+
+T-tests are used to conduct a contrasts when measures are continuous, but they do not work when the variable is categorical (how would you calculate the average of four categories of race?).
+
+When variables are categorical we will instead use a **chi-square test**. It is a common **test for independence of factor levels** in statistics. 
+
+Let's apply the same predictive reasoning as above to understand the meaning of a test for independence of two categorical variables.
+
+We have a sample of 100 individuals with either black or blonde hair. We record the eye color of each individual. Are hair color and eye color independent?
+
+TO answer this we start by creating a contingency table of the two factors: 
+
+![](figures/contingency-table.png)
+
+
+The most meaningful null hypothesis in a regression model is that the slope b1=0, that X and Y are related or independent. If the p-value for b1 in the model is less than 0.05 we conclude that X and Y are related or that they are NOT independent. So the slope=0 is the default null in regression models. 
+
+Note that factor levels will not always be proportionate in the population - more people tend to have dark hair in the world than blonde hair. 
+
+The first step of the chi-square test, then, is figuring out what proportion of individuals we would expect to observe in each cell if the factors are independent. 
+
+In this case we know that 60 percent of the sample will have black hair, which represents 60 individuals in this case since we have 100 individuals in the study. 
+
+Out of the 60 individuals, how many do we expect to have brown eyes? Well, if the factors are independent (if eye color does not depend on hair color) then we know 70 percent of the population has brown eyes, so we would guess than 70 percent of the 60 individuals would also have brown eyes.
+
+70 percent of 60 individuals is 42 individuals. 
+
+Similarly, the proportion of cases that we expect to observe in each cell will be the product of the row proportion and the column proportion. 
+
+
+![](figures/chi-square-null.png)
+
+After we have created our table of expected values under the null, we can compare the observed values to the expected values to see how closely our data conforms to a world in which the two factors are independent. 
+
+![](figures/chi-square-residuals.png)
+Similar to the regression model, our residuals are the amount our observed values deviate from the expected values. The proportions are reported on the tables here to keep it simple. The chi-square values utilize counts, not proportions. And similar to regression residuals we square the deviations before summing otherwise they would all cancel each other out since half will be positive deviations and half negative.
+
+The thing that makes a chi-square test different from other tests is that it does not produce a standard error, so we can't build a simple confidence interval to determine statistical significance. Instead we would need to construct all possible tables that have a sample size of 100 and the same row and column proportions, calculate the chi-square value for each table, then see how often the a chi-square value is as large as our observed value. 
+
+When tables are small this is a pretty straight-forward calculation. But when we have large sample and factors have many levels the number of possible tables can grow exponentially leading to a scenario where it can take hours or years to examine all tables that meet those criteria. As a result p-values are often calculated using an approximation heuristic. You might notice that if you run the same test several times the p-value will be slightly different each time. 
+
+
+
+**Real World Example**
 
 This example uses data about hair color and eye color from 592 individuals to test the independence of these two traits. 
 
@@ -627,7 +671,12 @@ But how do we know collectively if the groups are equivalent when we have lots o
 
 ![](figures/group-equivalence-table.png)
 
-Since we cannot use a t-test or chi-square to compare a bunch of variables at once, we must apply the criteria that none of the contrasts are statistically significant to establish group equivalence. 
+
+> The table reports characteristics of villages that participated in an economic development program and the villages they have been matched to for comparison.
+> 
+> If two groups are equivalent we should expect that tests show no meaningful differences across the measured traits. If the matching worked (the study groups are well-balanced) then no significant differences should exist. 
+
+Since we cannot use a t-test or chi-square to **compare a bunch of variables at once**, we must apply the criteria that none of the contrasts are statistically significant to establish group equivalence. 
 
 There is a problem here, though!
 
@@ -637,124 +686,21 @@ Assuming that the groups are in fact equivalent, if the probability of a Type I 
 
 It's a lot more than 0.05 if we perform 20 independent contrasts and use the same decision criteria for rejecting the null that we use for a single test. 
 
-We can demonstrate the issue with a coin-flip example. Assume a casino has started offering a coin flip game (if the flip is heads the casino wins, tails and the gambler wins). State regulators visit the casino each month to inspect their games to make sure they are fair and the casino is not cheating. 
+We can demonstrate the issue with a coin-flip example. If you were asked, what's the probability that I observe five heads in my coin flip experiment the pertinent question would be, "How many coin flip trials did you conduct?"
 
-They have decided on a test: they flip the same coin FOUR times to inspect outcomes. The probability of getting heads one flip should be 0.5, so the probabily of getting heads all four times is:
+If there were only five flips made then this outcome would be quite rate - it would only occur in 3 percent of the experiments using a fair coin: 
 
-(0.5)(0.5)(0.5)(0.5) = 0.0625
-
-To keep things simple the regulating agency says if this occurs the casino gets fined. Similar to a hypothesis-testing scenario, **casinos that are using fair coins they will unjustly receive a fine 6.25 percent of the time** (a Type I error). 
-
-The regulator and the casino owners have agree that it's an appropriate test because the alternatives to this simple test are expensive and time-consuming (the fair casino is better off paying 1 fine approximately every 20 visits than to pay for more extensive monthly audits). 
-
-One of the regulators proposes they can increase the sample size to improve the accuracy of the tests (sounds reasonable, right?). They will now flip the coin TEN times instead of four. HOWEVER, they do not adjust the decision criteria. 
-
-Now, if at least four or of ten flips are heads, then the casino is still fined. 
-
-Did the larger sample size improve the accuracy of the process? Is this a good decision criteria? 
-
-Obviously not. With ten coins we expect five to be heads (which happens about 1/4 of the time). With that many flips there is an 82 percent chance of getting 4 or more heads, so now the casino is paying a fine 8 visits out of 10 when the coin is fair instead of 1 in 20. 
-
-**Likelihood of each outcome:**
-
-```{r, echo=F}
-n <- 10
-k <- 9
-p <- 0.5
-# choose( n=n, k=k )
-
-x <- NULL
-for( k in 0:10 )
-{
-x[k+1] <- choose( n=n, k=k ) * ( p ^ k  ) * ( (1-p) ^ (n-k) )
-}
-
-d <- data.frame( heads=(0:10), prob=round(x,3) )
-
-d %>% pander()
+```
+(0.5)(0.5)(0.5)(0.5)(0.5) = 0.03125
 ```
 
+If, however, you had performed 10 coin flips in the experiment then the outcome of 5 heads would occur about 25 percent of the time. 
 
-Instead of increasing the accuracy of the test, the regulatory agency has significantly increase the rate of Type I errors! Casinos with fair coins will not be happy.
+Similarly, if you asked about the likelihood of getting all heads in an experiment, knowing whether it was 2 flips or 20 flips makes a big difference. 
 
-The regulators wanted to increase the sample size so they would not be increase power, but they kept the same decision criteria from the earlier process (if four or more heads are observed the coins are considered unfair). 
+Analogously, the p-value describes the likelihood of observing an outcome when the null hypothesis is true (the NULL being slope=0 in a regression, or no differences in group means in a t-test). It is a reasonable decision criteria if we are doing a single contrast. But once we start doing lots of contrasts together we are increasing the likelihood that we observe at least one small p-value even when the groups are equivalent. 
 
-What they should have done was **select the desired confidence level (0.0625 to be consistent with the original process) and then determine a new decision rule that will fail approximately six percent of the time when the groups are actually equivalent.**
-
-According to the table above, the likelihood of getting 8 or more heads in 10 fair coin flips is 0.055. So that would be an appropriate threshold. 
-
-Analogously, if we want to determine group equivalency but we are conducting 20 contrasts instead of one, then we can't use the same decision criteria as when we are just testing a single contrast (alpha=0.05). Otherwise we will be greatly increasing the Type I error rate since there is a high probability that at least one out of 20 tests have p-values below 0.05 by chance. 
-
-**We need to define a new decision criteria for the omnibus scenario - testing all hypothses together.**
-
-<br>
-<br>
-
-----
-
-**SIDE NOTE** - not required for the lab.
-
-If you are curious, the probability of getting all heads is easy to calculate since it would simply entail ten heads in a row, each with a probability of 0.5:  $$(0.5)^{10} = 0.00097$$ or approximately one in a thousand.
-
-To determine success for 9 out of ten coin flips is a little harder. We need to model the flips as a Bernoulli process: 
-
-$$
-P(k) = {n \choose x} p^k q^{n-k}
-$$
-
-Where **n** is the number of trials, **k** is the number of successes, **p** is the probability of success in each independent trail, and **q** is the probability of failure, which is always 1 - p.
-
-Thus the likelihood of getting 9 heads out of 10 trials is. 
-
-$$
-P(k=9) =  {10 \choose 9} (0.5)^9 (0.5)^{1}
-$$
-
-```{r}
-n <- 10
-k <- 9
-p <- 0.5
-choose( n=n, k=k ) * ( p ^ k  ) * ( (1-p) ^ (n-k) )
-```
-
-$$
-P(k=8) =  {10 \choose 8} (0.5)^8 (0.5)^{2}
-$$
-
-
-```{r}
-n <- 10
-k <- 8
-p <- 0.5
-choose( n=n, k=k ) * ( p ^ k  ) * ( (1-p) ^ (n-k) )
-```
-
-Once we reach 8 heads, we are already approach a 5 percent probability mark, so a reasonable decision criteria for the regulators would be observing 8 or more heads in ten flips would result in a fine. 
-
-The total likelihood of these event would be P(k=10) + P(k=9) + P(k=8):
-
-```{r}
-0.00097 + 0.009765625 + 0.04394531
-```
-
-So about 5.5 percent chance of one of these occuring by chance if the coin is in fact fair.
-
-If we look at the next step, we see a big leap in the likelihood of observing 7 heads out of ten flips:
-
-
-$$
-P(k=7) =  {10 \choose 7} (0.5)^7 (0.5)^{3}
-$$
-
-```{r}
-n <- 10
-k <- 7
-p <- 0.5
-choose( n=n, k=k ) * ( p ^ k  ) * ( (1-p) ^ (n-k) )
-```
-
-So using any criteria less than 8 would result in a higher Type I error rate than desired. 
-
+Scroll to the end for another example of designing a fair decision criteria that accounts for context. 
 
 
 ----
@@ -805,20 +751,18 @@ It's a little annoying when p-values are not reported directly in a table. We ca
 Calculate the p-value for the largest contrast in the table (the one with the highest t-value):
 
 ```{r}
-
 # tvalue = largest tvalue in the table
 # n1 = sample size of treatment group 
 # n2 = samle size of comparison group 
 
 get_pval_from_tval <- function( tvalue, n1, n2 )
 {
-  df <- min( 2964, 2664 ) - 1  # size of treated group and comparison
+  df <- min( n1, n2 ) - 1  # size of treated group and comparison
   pval <- 2 * pt( abs(tvalue), df=df, lower.tail=FALSE )
   return( pval )
 }
 
 get_pval_from_tval( tvalue=2.16, n1=2964, n2=2664 )
-
 ```
 
 **Since 0.03 > 0.0045 then we do NOT reject the null ::: THE GROUPS ARE CONSIDERED EQUIVALENT**
@@ -865,6 +809,7 @@ After creating the contrasts, report your findings about study group equivalence
 
 
 
+
 ## Sample Code
 
 **TABLES:**
@@ -895,6 +840,15 @@ t.test( age ~ gender, data=dat )
 ```
 
 
+
+**RMD Template:**
+
+To download the template click on the link here then right-click on the template and save as lab-02-LASTNAME.rmd. 
+
+[ ![](figures/download.png) ](https://raw.githubusercontent.com/DS4PS/cpp-524-sum-2021/main/labs/lab-02-template.rmd)
+
+
+
 ## Example Response 
 
 **Compare past nonprofit formation experience of male and female entrepreneurs.** 
@@ -915,7 +869,7 @@ chisq.test( t, simulate.p.value=TRUE, B=10000 )
 
 -----
 
-**ANSWER:** No, we do not observe past founding differences between male and female entrepreneurs. Male founders reported slightly more past experience (53 percent versus 47 percent of female founders), but the contrast was not significant at the alpha=0.05 level (chi-squre p-value 0.2277). 
+**ANSWER:** No, we do not observe past founding differences between male and female entrepreneurs. Female founders reported slightly more past experience (53 percent versus 47 percent of male founders), but the contrast was not significant at the alpha=0.05 level (chi-squre p-value 0.2277). 
 
 ------
 
@@ -1043,6 +997,143 @@ Remember to:
 -----
 
 <br>
+
+# Extended Example: Designing a Decision Criteria
+
+This example is meant to demonstrate the process of creating a binding and actionable decision criteria in order to test a hypothesis. 
+
+We often use **alpha=0.05** in evaluation studies but it is not clear why. It turns out that alpha=0.05 is a cutoff that tends to do a good job of balancing Type I and Type II Errors under general conditions. When you make a test more sensitive so that you are more likely to detect a phenomenon like a COVID infection it also increases the likelihood of false positives. Making the criteria more stringent to eliminate this noise will alternatively increase the likelihood of missing real cases. So a good decision criteria must account for the cost of each type of error. 
+
+----- 
+
+Let's us an example where we need to design a regulatory framework for casinos. 
+
+Assume a casino has started offering a coin flip game: if the flip comes up heads the casino wins, tails and the gambler wins. State regulators visit the casino each month to inspect their games to make sure they are fair and the casino is not cheating. 
+
+They have decided on a test: they flip the same coin FOUR times to inspect outcomes. The probability of getting heads one flip should be 0.5, so the probability of getting heads all four times is:
+
+(0.5)(0.5)(0.5)(0.5) = 0.0625
+
+To keep things simple the regulating agency says if this occurs the casino gets fined. Similar to a hypothesis-testing scenario, **casinos that are using fair coins they will unjustly receive a fine 6.25 percent of the time** (a Type I error). 
+
+The regulator and the casino owners have agree that it's an appropriate test because the alternatives to this simple test are expensive and time-consuming (the fair casino is better off paying 1 fine approximately every 20 visits than to pay for more extensive monthly audits). 
+
+One of the regulators proposes they can increase the sample size to improve the accuracy of the tests (sounds reasonable, right?). They will now flip the coin TEN times instead of four. HOWEVER, they do not adjust the decision criteria. 
+
+Now, if at least four of ten flips are heads, then the casino is still fined. 
+
+Did the larger sample size improve the accuracy of the process? Is this a good decision criteria? 
+
+Obviously not. With ten coins we expect five to be heads (which happens about 1/4 of the time). With that many flips there is an 82 percent chance of getting 4 or more heads, so now the casino is paying a fine 8 visits out of 10 when the coin is fair instead of 1 in 20. 
+
+**Likelihood of each outcome:**
+
+```{r, echo=T}
+n <- 10
+k <- 9
+p <- 0.5
+# choose( n=n, k=k )
+
+x <- NULL
+for( k in 0:10 )
+{
+x[k+1] <- choose( n=n, k=k ) * ( p ^ k  ) * ( (1-p) ^ (n-k) )
+}
+
+d <- data.frame( heads=(0:10), prob=round(x,3) )
+
+d %>% pander()
+```
+
+
+Instead of increasing the accuracy of the test, the regulatory agency has significantly increase the rate of Type I errors! Casinos with fair coins will not be happy.
+
+The regulators wanted to increase the sample size so they would not be increase power, but they kept the same decision criteria from the earlier process (if four or more heads are observed the coins are considered unfair). 
+
+What they should have done was **select the desired confidence level (0.0625 to be consistent with the original process) and then determine a new decision rule that will fail approximately six percent of the time when the groups are actually equivalent.**
+
+According to the table above, the likelihood of getting 8 or more heads in 10 fair coin flips is 0.055. So that would be an appropriate threshold. 
+
+Analogously, if we want to determine group equivalency but we are conducting 20 contrasts instead of one, then we can't use the same decision criteria as when we are just testing a single contrast (alpha=0.05). Otherwise we will be greatly increasing the Type I error rate since there is a high probability that at least one out of 20 tests have p-values below 0.05 by chance. 
+
+**We need to define a new decision criteria for the omnibus scenario - testing all hypotheses together.**
+
+<br>
+<br>
+
+----
+
+**SIDE NOTE** 
+
+If you are curious, the probability of getting all heads is easy to calculate since it would simply entail ten heads in a row, each with a probability of 0.5:  $$(0.5)^{10} = 0.00097$$ or approximately one in a thousand.
+
+To determine success for 9 out of ten coin flips is a little harder. We need to model the flips as a Bernoulli process: 
+
+$$
+P(k) = {n \choose x} p^k q^{n-k}
+$$
+
+Where **n** is the number of trials, **k** is the number of successes, **p** is the probability of success in each independent trail, and **q** is the probability of failure, which is always 1 - p.
+
+Thus the likelihood of getting 9 heads out of 10 trials is. 
+
+$$
+P(k=9) =  {10 \choose 9} (0.5)^9 (0.5)^{1}
+$$
+
+```{r}
+n <- 10
+k <- 9
+p <- 0.5
+choose( n=n, k=k ) * ( p ^ k  ) * ( (1-p) ^ (n-k) )
+```
+
+$$
+P(k=8) =  {10 \choose 8} (0.5)^8 (0.5)^{2}
+$$
+
+
+```{r}
+n <- 10
+k <- 8
+p <- 0.5
+choose( n=n, k=k ) * ( p ^ k  ) * ( (1-p) ^ (n-k) )
+```
+
+Once we reach 8 heads, we are already approach a 5 percent probability mark, so a reasonable decision criteria for the regulators would be observing 8 or more heads in ten flips would result in a fine. 
+
+The total likelihood of these event would be P(k=10) + P(k=9) + P(k=8):
+
+```{r}
+0.00097 + 0.009765625 + 0.04394531
+```
+
+So about 5.5 percent chance of one of these occuring by chance if the coin is in fact fair.
+
+If we look at the next step, we see a big leap in the likelihood of observing 7 heads out of ten flips:
+
+
+$$
+P(k=7) =  {10 \choose 7} (0.5)^7 (0.5)^{3}
+$$
+
+```{r}
+n <- 10
+k <- 7
+p <- 0.5
+choose( n=n, k=k ) * ( p ^ k  ) * ( (1-p) ^ (n-k) )
+```
+
+So using any criteria less than 8 would result in a higher Type I error rate than desired. 
+
+
+<br>
+
+----
+
+<br>
+
+
 
 
 
