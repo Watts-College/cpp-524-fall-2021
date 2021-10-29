@@ -328,23 +328,25 @@ This week introduces the notion of counterfactual reasoning using quasi-experime
 
 * Be able to define and explain what is meant by "counterfactual reasoning" broadly. 
 * Explain the three primary counterfactuals in all statistics models. 
-* Apply the appropriate tests to determine whether the counterfactual is appropriate and robust. 
-
-**Lecture Materials**  
-
-* [**Introduction to Counterfactuals**]({{page.pdf-root-url}}/lectures/p-01-intro-to-counterfactuals.pdf)
-
-* [**Testing the Counterfactual Validity**]({{page.pdf-root-url}}/lectures/p-02-tests-for-cf-validity.pdf)
-
-  - Pre-study equivalence  
-  - Tests for non-random attrition  
-
-* [**Varieties of the Counterfactual**]({{page.pdf-root-url}}/lectures/p-03-varieties-of-counterfactuals.pdf)
-
   - Pre-post with comparison group design  
   - Post-test only design 
   - Reflexive design 
+* Apply the appropriate tests to determine whether the counterfactual is appropriate and robust. 
+  - Pre-study equivalence  
+  - Tests for non-random attrition  
 
+  
+**Lecture Materials**  
+
+<a class="uk-button uk-button-default" style="width:130px" href="{{page.pdf-root-url}}/lectures/p-01-intro-to-counterfactuals.pdf">Introduction to Counterfactuals</a>
+
+<a class="uk-button uk-button-default" style="width:130px" href="{{page.pdf-root-url}}/lectures/p-02-tests-for-cf-validity.pdf">Testing the Counterfactual Validity</a>
+
+<a class="uk-button uk-button-default" style="width:130px" href="{{page.pdf-root-url}}/lectures/p-03-varieties-of-counterfactuals.pdf">Varieties of the Counterfactual</a>
+
+<a class="uk-button uk-button-default" style="width:130px" href="../lectures/happy-randomization/">Happy Randomization</a>
+
+  
 <br>
 
 **Review Use of Dummy Variables in Regression:** 
