@@ -677,16 +677,18 @@ You will be reviewing the following chapters from *Bingham, R., & Felbinger, C. 
 
 [CH11 Reflexive Study Design]({{page.pdf-root-url}}/pubs/eval-in-practice-CH11-nutrition-behavior-change.pdf) 
 
-You will report the result for each item of the Campbell Score for each study and give your reasoning for the score on each item (a +1 if the threat to validity or competing hypothesis is adequately neutralized in the study, and +0 if the threat was not eliminated). Here are some example solutions based upon CH5 that you reviewed for the first lab.  
+You will report the result for each item of the Campbell Score for each study and give your reasoning for the score on each item (a +1 if the threat to validity or competing hypothesis is adequately neutralized in the study, and +0 if the threat was not eliminated). Here are some example solutions based upon CH5 that you reviewed for the first lab. 
+  
+<hr> 
 
-[Example Solution]({{page.pdf-root-url}}/labs/Campbell-Scores-CH5%20-SOLUTIONS.pdf)
+<a class="uk-button uk-button-default" style="width:250px" href="{{page.pdf-root-url}}/labs/campbell-score-instructions.pdf">Campbell Score Instructions</a>
 
-<a class="uk-button uk-button-default" href="{{page.pdf-root-url}}/labs/campbell-score-instructions.pdf">Campbell Score Instructions</a>
-
-When you are complete:
+<a class="uk-button uk-button-default" style="width:250px" href="{{page.pdf-root-url}}/labs/Campbell-Scores-CH5%20-SOLUTIONS.pdf">Example Solution</a>
 
 <a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">Submit Lab</a>
 
+<hr> 
+  
 <br>
 <br>
 
