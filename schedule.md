@@ -389,9 +389,9 @@ We rarely have the resources or opportunity to utilize Randomized Control Trials
 **PART I: TESTS FOR GROUP EQUIVALENCE**
 
 
-<a class="uk-button uk-button-default" href="../labs/lab-02-equivalence-tests.html">Lab-02 Instructions</a>
+<a class="uk-button uk-button-default" style="width:250px" href="../labs/lab-02-equivalence-tests.html">Lab-02 Instructions</a>
 
-<a class="uk-button uk-button-default" href="https://raw.githubusercontent.com/Watts-College/cpp-524-fall-2021/main/labs/lab-02-template.rmd">Lab-02 RMD TEMPLATE</a>
+<a class="uk-button uk-button-default" style="width:250px" href="https://raw.githubusercontent.com/Watts-College/cpp-524-fall-2021/main/labs/lab-02-template.rmd">Lab-02 RMD TEMPLATE</a>
 
 <a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">Submit Lab</a>
 
