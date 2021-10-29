@@ -17,9 +17,7 @@ The start with the top 4 blocks and assign them each to one study group, then wo
   
 Why not just randomly assign all of the blocks to the 4 study groups and not worry about tranches? Since we are using randomization for assignment it should work out, right? 
   
-In this case since we have small sample sizes - only 5 blocks per group - there is a high likelyhood that pure randomization will fail to produce balanced groups. This can be shown through a simulation of random assignment. 
-
-*Note that in the actual study they do achieve group balance using the tranches method.* 
+In this case since we have small sample sizes - only 5 blocks per group - there is a high likelyhood that pure randomization will fail to produce balanced groups. This can be shown through a simulation of random assignment. Note that in the actual study they DO achieve group balance using the tranches method. 
 
 The take-away is that randomization is not a silver bullet that solves all problems. Depending upon the group structure and sample sizes it is not guaranteed that random assignment will produce group balance. The test for group equivalence can be used to ensure randomization was "happy" or that manual group construction approaches like matching have worked as expected. 
   
@@ -38,15 +36,20 @@ group4          33
 ```
 
 ```r
-y <- 1:100  # percentiles of academic performance
+# assign 5 students to each block,
+# assign 5 blocks to each of 4 study groups
+
+# study population of 100 students with pre-study
+# academic performance measured in percentiles:
+y <- 1:100  
      
 # 5 students in each block
 blocks <- rep( LETTERS[1:20], each=5 )
  
-# randomize order of blocks
-x <- sample( blocks, 20 )
+# randomize order of blocks then
+# assign 5 blocks to each group:
 
-# assign 5 blocks to each group: 
+x <- sample( blocks, 20 )
 study.group <- NULL
 study.group[ blocks %in% x[1:5] ]   <- "group1"
 study.group[ blocks %in% x[6:10] ]  <- "group2"
