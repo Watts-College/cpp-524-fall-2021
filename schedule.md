@@ -338,13 +338,13 @@ This week introduces the notion of counterfactual reasoning using quasi-experime
   
 **Lecture Materials**  
 
-<a class="uk-button uk-button-default" style="width:130px" href="{{page.pdf-root-url}}/lectures/p-01-intro-to-counterfactuals.pdf">Introduction to Counterfactuals</a>
+<a class="uk-button uk-button-default" style="width:250px" href="{{page.pdf-root-url}}/lectures/p-01-intro-to-counterfactuals.pdf">Introduction to Counterfactuals</a>
 
-<a class="uk-button uk-button-default" style="width:130px" href="{{page.pdf-root-url}}/lectures/p-02-tests-for-cf-validity.pdf">Testing the Counterfactual Validity</a>
+<a class="uk-button uk-button-default" style="width:250px" href="{{page.pdf-root-url}}/lectures/p-02-tests-for-cf-validity.pdf">Testing the Counterfactual Validity</a>
 
-<a class="uk-button uk-button-default" style="width:130px" href="{{page.pdf-root-url}}/lectures/p-03-varieties-of-counterfactuals.pdf">Varieties of the Counterfactual</a>
+<a class="uk-button uk-button-default" style="width:250px" href="{{page.pdf-root-url}}/lectures/p-03-varieties-of-counterfactuals.pdf">Varieties of the Counterfactual</a>
 
-<a class="uk-button uk-button-default" style="width:130px" href="../lectures/happy-randomization/">Happy Randomization</a>
+<a class="uk-button uk-button-default" style="width:250px" href="../lectures/happy-randomization/">Happy Randomization</a>
 
   
 <br>
