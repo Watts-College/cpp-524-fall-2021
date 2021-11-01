@@ -17,8 +17,8 @@ session:
   sample-code: 'https://www.dropbox.com/s/lm2g0jlzlo14zu9/tests-for-group-equivalence.pdf?dl=0' 
 - week3:
   date:  'Mon Nov 1st'  
-  video: ''
-  password: ''
+  video: 'https://asu.zoom.us/rec/share/p8TiEF_bebh0gotPrP5tviUV4aNgD9ac_ddVVSADN2CK0FYUjQxt1U6fsY0GcyrX.CbAFd590xYA3WQuc'
+  password: 'kkp$6uW8'
   sample-code: '' 
   session-code: '' 
 
