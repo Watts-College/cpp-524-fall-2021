@@ -19,9 +19,12 @@ session:
   date:  'Mon Nov 1st'  
   video: 'https://asu.zoom.us/rec/share/p8TiEF_bebh0gotPrP5tviUV4aNgD9ac_ddVVSADN2CK0FYUjQxt1U6fsY0GcyrX.CbAFd590xYA3WQuc'
   password: 'kkp$6uW8'
+- week4:
+  date:  'Mon Nov 8th'  
+  video: ''
+  password: ''
   sample-code: '' 
   session-code: '' 
-
 ---
 
 
