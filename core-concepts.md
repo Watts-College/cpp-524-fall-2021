@@ -129,7 +129,7 @@ One challenge here is the control group is different than the treatment group, s
 
 ```
 A = pre-treatment group mean
-D-C = gains without the treatment
+D-C = gains without the treatment ("trend" or "secular trend")
 A + (D-C) = state of the world in the absence of a treatment
 ```
 
