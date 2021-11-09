@@ -21,9 +21,9 @@ session:
   password: 'kkp$6uW8'
 - week4:
   date:  'Mon Nov 8th'  
-  video: ''
-  password: ''
-  sample-code: '' 
+  video: 'https://asu.zoom.us/rec/share/OD8ucsDv_oyFo3tNGKSG_7Z7sjPMapiiLlDxd3hkjizSCXkYSkNnj3rjM-TGHXts.3le89V_Edu36ZCoK'
+  password: 'FgkL3?q3'
+  sample-code: 'https://www.youtube.com/watch?v=zk6gOeggViw' 
   session-code: '' 
 ---
 
