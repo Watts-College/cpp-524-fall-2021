@@ -42,6 +42,9 @@ The treatment group starts treatment in the first time period and continues to r
 ```{r, fig.height=8, fig.width=8, eval=F, echo=F}
 
 # CODE TO GENERATE A SYNTHETIC DATASET
+#
+# Notes for future updates of the lab only (create new data).
+# Do not run this chunk otherwise.
 
 # -----------------------------------------------
 #     &nbsp;       time0   time1   time2   time3 
@@ -196,13 +199,14 @@ d$group <- factor( d$group,
 ```
 
 
-Sample sizes for each group in the panel:
+## Table 1: Sample sizes for each group in the panel
 
 ```{r}
 table( d$group,d$time ) %>% pander()
 ```
 
-Group means in each time period: 
+
+## Table 2: Group means in each time period 
 
 ```{r}
 tapply( d$ability, list(d$group,d$time), mean ) %>% 
@@ -243,7 +247,7 @@ text( 50, 3.7, "Start of \nTreatment \nPeriods", col="darkred" )
 
 
 
-# Reflexive (Pre-Post) Estimator
+# Reflexive Pre-Post Estimator (T2-T1)
 
 
 ```{r, fig.height=8, fig.width=8, echo=F}
@@ -275,7 +279,31 @@ text( 80, t[3,4], "Control Group", col="steelblue", pos=4 )
 
 points( x[2:3], t[2,2:3], 
         type="b", pch=19, col="darkred", cex=4, lwd=2, lty=3 )
+
+text( x[2:3], t[2,2:3], labels=c("T1","T2"), 
+      col="darkred", cex=1.5, pos=3, offset=1 )
 ```
+
+Isolate all of the students in the treatment group from time periods 1 and 2 only. 
+
+The T1 measure represents cognitive ability of students in the group at the start of the treatment period. T2 represents cognitive ability after one season of participation in the program. 
+
+The post-treatment dummy created here will be 1 for each observation in time2 and 0 for each observation in time1.
+
+```{r, echo=F}
+
+df <- data.frame( 
+       student=c("student_1","...","student_k","student_1","...","student_k"),
+       group="treatment",
+       time=rep(c("time1","time2"), each=3),
+       post.dummy=rep(c(0,1),each=3) )
+
+df %>% pander()
+```
+
+The regression model is then: 
+
+$$ y = b_0 + b_1 * post.dummy + e $$
 
 
 ```{r, results="asis"}
@@ -297,16 +325,27 @@ stargazer( m, type=s.type,
 
 **What is the average score for kids in the treatment group in period 1 of the study? What is the average score for the same kids in period 2?** 
 
-## Question 2a
+**Note, you can check your answers against the group means in Table 2 above.**
 
-**What is the effect size in this model?** 
+
+## Question 1b
+
+**Explain what it means when b0 is statistically significant in the reflexive model. Explain what it means when b1 is statistically significant.** 
+
+## Question 1c
+
+**What is the effect size according to this model?** 
 
 <br>
 <hr>
 <br>
 
+Recall that the identifying assumption of a reflexive model (T2-T1) is that there is no secular trend, i.e. we would expect no gains in the study period for a group that does not receive the treatment. 
 
-Test for zero trend assumption: C1=C2
+Is the reflexive model appropriate here? Is the zero trend assumption met? 
+
+Test for zero trend assumption: C1=C2 or C2-C1=0
+
 
 ```{r, fig.height=6, fig.width=7, echo=F}
 
@@ -336,7 +375,14 @@ text( 80, t[3,4], "Control Group", col="steelblue", pos=4 )
 
 points( x[2:3], t[3,2:3], 
         type="b", pch=19, col="darkred", cex=4, lwd=2, lty=3 )
+
+text( x[2:3], t[3,2:3], labels=c("C1","C2"), 
+      col="darkred", cex=1.5, pos=1, offset=1 )
 ```
+
+Similar to above, isolate the data only for time periods 1 and 2 for the kids in the control group.
+
+Create a post-treatment dummy that is 1 for the second time period and 0 for the first time period. 
 
 ```{r, results="asis"}
 dm <- filter( d, 
@@ -358,16 +404,13 @@ stargazer( m, type=s.type,
 
 **What is the average score for kids in the control group in period 1 of the study? What is the average score for the same kids in period 2?** 
 
+
 ## Question 2b
 
-**Explain what it means when b0 is statistically significant in the reflexive model. Explain what it means when b1 is statistically significant.** 
+**Which coefficient represents the test for whether we observe a secular trend in student achievement gains independent of the treatment? What is the decision rule?**
+
 
 ## Question 2c
-
-**What is the test for whether we observe a secular trend in student achievement gains independent of the treatment?**
-
-
-## Question 2d
 
 **What does this model tell us about the appropriateness of the reflexive model?**
 
@@ -377,7 +420,7 @@ stargazer( m, type=s.type,
 
 
 
-# Post-Test Only Estimator
+# Post-Test Only Estimator (T2-C2)
 
 
 ```{r, fig.height=8, fig.width=8, echo=F}
@@ -409,9 +452,27 @@ text( 80, t[3,4], "Control Group", col="steelblue", pos=4 )
 
 points( c(64,64), t[2:3,3], 
         type="b", pch=19, col="darkred", cex=4, lwd=2, lty=3 )
+
+text( x[3], t[2:3,3], labels=c("T2","C2"), 
+      col="darkred", cex=1.5, pos=c(3,1), offset=1 )
 ```
 
+Isolate data from the post-treatment period only (time2) for the treatment and control groups. Create a treat.dummy that designates whether the student was in the treatment group or control group:
 
+```{r, echo=F}
+
+df <- data.frame( 
+       student=c("student_1","...","student_k","student_1","...","student_k"),
+       group=rep(c("control","treatment"), each=3),
+       time="time2",
+       treat.dummy=rep(c(0,1),each=3) )
+
+df %>% pander()
+```
+
+The regression looks very similar, but notice we are comparing two groups at the same point in time instead of one group across two periods of time now: 
+
+$$ y = b_0 + b_1 * treat.dummy + e $$
 
 ```{r, results="asis"}
 dm <- filter( d, 
@@ -431,12 +492,26 @@ stargazer( m, type=s.type,
 
 ## Question 3a
 
-**What is the effect size identified by the model?**
+**What is the average score for kids in the control group in the study? What is the average score for the kids in the treatment group?** 
+
+**Note, you can check your answers against the group means in Table 2 above.**
 
 
 ## Question 3b
 
+**What is the effect size identified by the model?**
+
+
+## Question 3c
+
 **What is the identifying assumption of this model? Or stated differently, what must be true in order for the post-test only estimator to be appropriate?**
+
+
+## Question 3d
+
+**According to the model below is the assumption met? How can you tell?**
+
+
 
 
 ![](figures/post-test-only.png)
@@ -462,8 +537,11 @@ stargazer( m, type=s.type,
 
 
 
-# Diff-in-Diff Estimator 
+# Diff-in-Diff Estimator [ gains - trend ]
 
+Total Gains: T2-T1  
+Trend: C2-C1  
+DID Estimator: [ gains - trend ] = [ (T2-T1) - (C2-C1) ]  
 
 ```{r, fig.height=8, fig.width=8, echo=F}
 
@@ -496,9 +574,32 @@ points( x[2:3], t[2,2:3],
         type="b", pch=19, col="darkred", cex=4, lwd=2, lty=3 )
 points( x[2:3], t[3,2:3], 
         type="b", pch=19, col="darkred", cex=4, lwd=2, lty=3 )
+
+text( rep(x[2:3],each=2), t[2:3,2:3], labels=c("T1","C1","T2","C2"), 
+      col="darkred", cex=1.5, pos=c(3,1,3,1), offset=1.2 )
 ```
 
 
+Select data from the treatment and control groups in the pre-treatment and post-treatment period.
+
+Create a dummy for the treatment group and a dummy for the post-treatment period (time2).
+
+```{r, echo=F}
+
+df <- data.frame( 
+       student=rep(c("student_1","...","student_k"),4),
+       group=rep(c("control","treatment","control","treatment"), each=3),
+       time=rep( c("time1","time2"), each=6 ),
+       treat.dummy=rep(c(0,1,0,1),each=3),
+       post.dummy=rep(c(0,1),each=6),
+       post.treat.dummy=rep(c(0,0,0,1),each=3) )
+       
+df %>% pander()
+```
+
+Regression model: 
+
+$$ y = b_0 + b_1 * treat.dummy + b_2 * post.dummy + b_3 * treat.post.dummy + e $$ 
 
 ```{r, results="asis"}
 dm <- filter( d, group %in% c("treatment","control") &
@@ -577,6 +678,18 @@ T2-CF
 
 # Alternative Diff-in-Diff Estimator 
 
+Total Gains: T2-T1  
+Trend: C2-C1  
+DID Estimator: [ gains - trend ] = [ (T2-T1) - (C2-C1) ]  
+
+Note that we need a comparison group for the difference-in-difference model, but it is does not represent the counterfactual in the study. It is only used to estimate the level of secular trend in the data, and we construct a synthetic counterfactual as: 
+
+$$ T1 + trend $$ 
+
+We can use any group that did not receive the treatment to measure trend, as long as we expect it to be a decent representation of what the trend would be in the treatment group. We can run the same model using the High SES group to measure trend. 
+
+Does it change our results in any meaningful way?
+
 ```{r, fig.height=8, fig.width=8, echo=F}
 
 x <- c(42,50,64,78)
@@ -606,6 +719,9 @@ points( x[2:3], t[2,2:3],
         type="b", pch=19, col="darkred", cex=4, lwd=2, lty=3 )
 points( x[2:3], t[1,2:3], 
         type="b", pch=19, col="darkred", cex=4, lwd=2, lty=3 )
+
+text( rep(x[2:3],each=2), t[1:2,2:3], labels=c("H1","T1","H2","T2"), 
+      col="darkred", cex=1.5, pos=c(3,1,3,1), offset=1.2 )
 ```
 
 ```{r, results="asis"}
@@ -634,7 +750,7 @@ stargazer( m, type=s.type,
 
 ## Question 6b
 
-**Does the diff-in-diff model require that study groups are equivalent prior to treatment to generate valid results? If not, what is the identification assumption of this model?**
+**Does the diff-in-diff model require that study groups are equivalent prior to treatment to generate valid results?**
 
 
 ## Question 6c
@@ -645,6 +761,10 @@ stargazer( m, type=s.type,
 ## Question 6d
 
 **The treatment effects from this model are approximately the same as the previous diff-in-diff model, even though they use very different comparison groups. Why does this model still work using the high SES group?**
+
+## Question 6e
+
+**What is the identification assumption of the diff-in-diff model?**
 
 
 <br>
@@ -685,6 +805,9 @@ points( x[1:2], t[2,1:2],
         type="b", pch=19, col="darkred", cex=4, lwd=2, lty=3 )
 points( x[1:2], t[1,1:2], 
         type="b", pch=19, col="darkred", cex=4, lwd=2, lty=3 )
+
+text( rep(x[1:2],each=3), t[1:3,1:2], labels=c("H1","T1","C1","H2","T2","C2"), 
+      col="darkred", cex=1.5, pos=c(3,3,1,3,3,1), offset=1.2 )
 ```
 
 ```{r, results="asis"}
