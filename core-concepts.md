@@ -19,13 +19,23 @@ title: Core Concepts in Research Design
 
 ----
 
-A counterfactual assertion is a conditional whose antecedent is false and whose consequent describes how the world would have been if the antecedent had obtained.  The counterfactual takes the form of a subjunctive conditional: "If P had obtained, then Q would have obtained".  In understanding and assessing such a statement we are asked to consider how the world would have been if the antecedent condition had obtained.  For example, "If the wind had not reached 50 miles per hour, the bridge would not have collapsed" or "If the Security Council had acted, the war would have been averted."  We can ask two types of questions about counterfactual conditionals: What is the meaning of the statement, and how do we determine whether it is true or false?  A counterfactual conditional cannot be evaluated as a truth-functional conditional, since a truth-functional conditional with false antecedent is ipso facto true.  (That is, "if P then Q" is equivalent to "either not P or Q".)  So is it necessary to provide a logical analysis of the truth conditions of counterfactuals if they are to be useful in rigorous thought.
+**Roots in formal logic:**
 
-There is a close relationship between counterfactual reasoning and causal reasoning.   If we assert that "P caused Q (in the circumstances Ci)", it is implied that we would assert: "If P had not occurred (in circumstances Ci) then Q would not have occurred."  So a causal judgment implies a set of counterfactual judgments.  Symmetrically, a counterfactual judgment is commonly supported by reference to one or more causal processes that would have conveyed the world from the situation of the antecedent to the consequent.  When we judge that the Tacoma Narrows Bridge would not have collapsed had the wind not reached 50 miles per hour, we rely on a causal theory of the structural dynamics of the bridge and the effects of the wind in reaching the consequent.
+*A counterfactual assertion is a conditional whose antecedent is false and whose consequent describes how the world would have been if the antecedent had obtained.  The counterfactual takes the form of a subjunctive conditional: "If P had obtained, then Q would have obtained".*  
+  
+*In understanding and assessing such a statement we are asked to consider how the world would have been if the antecedent condition had obtained.  For example, "If the wind had not reached 50 miles per hour, the bridge would not have collapsed" or "If the Security Council had acted, the war would have been averted."*  
 
-How do we assign a truth value to a counterfactual statement?  The most systematic answer is to appeal to causal relations and causal laws.  If we believe that we have a true causal analysis of the occurrence of Q, and if P is a necessary part of the set of sufficient conditions that bring Q to pass—then we can argue that, had P occurred, Q would have occurred.  David Lewis (1973) analyzes the truth conditions and logic of counterfactuals in terms of possible worlds (possible world semantics).  A counterfactual is interpreted as a statement about how things occur in other possible worlds governed by the same laws of nature.  Roughly: "in every possible world that is relevantly similar to the existing world but in which the wind does not reach 50 miles per hour, the bridge does not collapse."  What constitutes "relevant similarity" between worlds is explained in terms of "being subject to the same laws of nature."  On this approach we understand the counterfactual "If P had occurred, Q would have occurred" as a statement along these lines: "P & {laws of nature} entail Q".  This construction introduces a notion of "physical necessity" to the rendering of counterfactuals: given P, it is physically necessary that Q.
+*We can ask two types of questions about counterfactual conditionals: What is the meaning of the statement, and how do we determine whether it is true or false?  A counterfactual conditional cannot be evaluated as a truth-functional conditional, since a truth-functional conditional with false antecedent is ipso facto true.  (That is, "if P then Q" is equivalent to "either not P or Q".)  So is it necessary to provide a logical analysis of the truth conditions of counterfactuals if they are to be useful in rigorous thought.*
 
-*Citations:*
+*There is a close relationship between counterfactual reasoning and causal reasoning. If we assert that "P caused Q (in the circumstances Ci)", it is implied that we would assert: "If P had not occurred (in circumstances Ci) then Q would not have occurred."  So a causal judgment implies a set of counterfactual judgments.*
+
+*Symmetrically, a counterfactual judgment is commonly supported by reference to one or more causal processes that would have conveyed the world from the situation of the antecedent to the consequent.  When we judge that the Tacoma Narrows Bridge would not have collapsed had the wind not reached 50 miles per hour, we rely on a causal theory of the structural dynamics of the bridge and the effects of the wind in reaching the consequent.*
+
+*How do we assign a truth value to a counterfactual statement?  The most systematic answer is to appeal to causal relations and causal laws. If we believe that we have a true causal analysis of the occurrence of Q, and if P is a necessary part of the set of sufficient conditions that bring Q to pass—then we can argue that, had P occurred, Q would have occurred.  David Lewis (1973) analyzes the truth conditions and logic of counterfactuals in terms of possible worlds (possible world semantics).*
+  
+*A counterfactual is interpreted as a statement about how things occur in other possible worlds governed by the same laws of nature.  Roughly: "in every possible world that is relevantly similar to the existing world but in which the wind does not reach 50 miles per hour, the bridge does not collapse."  What constitutes "relevant similarity" between worlds is explained in terms of "being subject to the same laws of nature."  On this approach we understand the counterfactual "If P had occurred, Q would have occurred" as a statement along these lines: "P & {laws of nature} entail Q".  This construction introduces a notion of "physical necessity" to the rendering of counterfactuals: given P, it is physically necessary that Q.*
+
+**Citations:**
 
 *Lewis, David K. 1973. Counterfactuals. Cambridge: Harvard University Press.*
  
@@ -66,7 +76,11 @@ In cases where the outcome is continuous, such as income levels or wheat yield p
 Or more succinctly:
 
 ```
-Y(t) - Y(c)
+Y(t) - Y(c)   # outcome of treatment group minus outcome of control group
+  
+OR 
+  
+T2 - C2    # group outcomes in the post-treatment period (period 1 being the pre-treatment period)
 ```
 
 The outcome is measured now as a difference of means instead of a change in probabilities of observing success. Thus, we typically care about the **Average Treatment Effects** because it is the easiest thing to measure (the average outcome for the treatment and control groups) and most succinct way to communicate program effectiveness in evaluation studies. 
@@ -74,35 +88,6 @@ The outcome is measured now as a difference of means instead of a change in prob
 <br>
 <br>
   
-## Important Consideration for Interpretting Impact
-
-The probabalistic nature of causal relationships in social science poses challenges to inference because we will almost always observe some differences in group means. The hard part is determining whether the observed differences are (1) statistically meaningful, i.e. significant, (2) pragmatically meaningful, i.e. large enough effect sizes to warrant investments given a cost-benefit calculation and alternative program models we can fund, and (3) the relationship is causal (think back to the classroom size example where billions were spent reducing class sizes and most schools saw no improvements in test scores). 
-
-More so, the marginal nature of program success can pose a challenge to communicating program impact to funders, stakeholders, or the general population. Should we be excited about a 1% increase in an outcome? If we are talking test scores in school, probably not. If we are talking growth in the US economy, that is a huge impact that equates to hundreds of billions of dollars, so yes!
-
-More importantly, if we increase growth by 1% and it is a persistent effect then the benefits will **compound over time**. This is a very subtle but important consideration in understanding program impact. 
-
-If we observe that the program results in a 10% change the REALLY important question is whether it is a **change in a stock** of a value or a **change in the flow** of a value? A change in a stock is a one-time bump in the outcome and a change in a flow compounds over time rather quickly. 
-
-For example, if median income is $56,000 then a growth rate of 2% results in a salary of $57k and a growth rate of 5% resuls in a salary of $59k the following year. There is not a huge difference between $57k and $59k so we might be tempted to discount the importance of the intervention that increased the GDP growth rate. HOWEVER, growth compounds annually over time so these small differences are amplified through the magic of exponential growth. The small change in annual growth rates results in huge differences in the size of the economy over time. 
-
-![](https://www.mercatus.org/sites/default/files/beach_and_de_rugy_years_to_double_gdp-chart_copy_0.png)
-
-For example, when we look at how data analytics can impact the performance of businesses, government agencies, or political campaigns we might see a slight increase in performance such as market or voter share rising from 10% to 15%. On an annual basis the **stock measure** of market share will not change that much in a single year, but these are annual **flows** that represent changes to the stock over time. Over several years the aggregate impact can be huge. 
-
-This was essentially the story we see in the *Good to Great* companies popularized by Jim Collins. The high-performing companies were not those taking big risks to introduce new products or splashy mergers. Rather, they were companies that only performed slightly better than the market, but they did so **consistently over time** by focusing on fundamentals. Those small annual differences quickly compounded into huge market gains for the good to great companies. 
-
-![](https://i1.wp.com/www.themastermindwithin.com/wp-content/uploads/2017/11/good-to-great-companies.gif?resize=585%2C319&ssl=1)
-
-We will spend a lot of time this semester looking at program effects, how we can identify them, and how we can contextualize them to understand not just whether our results are statistically significant, but whether they are practically important as well. In each study practice trying to make sense of the practical implications of a program intervention. Does it impact a stock or a flow? Is the effect small or large? 
-
-
-<br>
-<br>
-
-
-
-
 
 
 ## The Importance of the Null Hypothesis
@@ -144,7 +129,7 @@ One challenge here is the control group is different than the treatment group, s
 
 ```
 A = pre-treatment group mean
-D-C = gains without the treatment
+D-C = gains without the treatment ("trend" or "secular trend")
 A + (D-C) = state of the world in the absence of a treatment
 ```
 
@@ -222,6 +207,34 @@ Statistical signifance tells us the likelihood that the model slope differs from
 We can treat this exercise as a murder mystery. Who created the changes in the data? Our leading theory is that the program did it, but we also must eliminate all of the other suspects. 
 
 We will use a check-list approach that we call a **Campbell Score**, which is a list of the ten most common competing hypotheses that weaken internal validity. We will use the check-list to practice reading research critically to look for holes in design. You will also use the tool to create a research design for a program of your choice, and think through which competing explanations you need to neutralize if you want your results to be compelling.  
+
+
+<br>
+<br>
+
+
+
+## Important Consideration for Interpretting Impact
+
+The probabalistic nature of causal relationships in social science poses challenges to inference because we will almost always observe some differences in group means. The hard part is determining whether the observed differences are (1) statistically meaningful, i.e. significant, (2) pragmatically meaningful, i.e. large enough effect sizes to warrant investments given a cost-benefit calculation and alternative program models we can fund, and (3) the relationship is causal (think back to the classroom size example where billions were spent reducing class sizes and most schools saw no improvements in test scores). 
+
+More so, the marginal nature of program success can pose a challenge to communicating program impact to funders, stakeholders, or the general population. Should we be excited about a 1% increase in an outcome? If we are talking test scores in school, probably not. If we are talking growth in the US economy, that is a huge impact that equates to hundreds of billions of dollars, so yes!
+
+More importantly, if we increase growth by 1% and it is a persistent effect then the benefits will **compound over time**. This is a very subtle but important consideration in understanding program impact. 
+
+If we observe that the program results in a 10% change the REALLY important question is whether it is a **change in a stock** of a value or a **change in the flow** of a value? A change in a stock is a one-time bump in the outcome and a change in a flow compounds over time rather quickly. 
+
+For example, if median income is $56,000 then a growth rate of 2% results in a salary of $57k and a growth rate of 5% resuls in a salary of $59k the following year. There is not a huge difference between $57k and $59k so we might be tempted to discount the importance of the intervention that increased the GDP growth rate. HOWEVER, growth compounds annually over time so these small differences are amplified through the magic of exponential growth. The small change in annual growth rates results in huge differences in the size of the economy over time. 
+
+![](https://www.mercatus.org/sites/default/files/beach_and_de_rugy_years_to_double_gdp-chart_copy_0.png)
+
+For example, when we look at how data analytics can impact the performance of businesses, government agencies, or political campaigns we might see a slight increase in performance such as market or voter share rising from 10% to 15%. On an annual basis the **stock measure** of market share will not change that much in a single year, but these are annual **flows** that represent changes to the stock over time. Over several years the aggregate impact can be huge. 
+
+This was essentially the story we see in the *Good to Great* companies popularized by Jim Collins. The high-performing companies were not those taking big risks to introduce new products or splashy mergers. Rather, they were companies that only performed slightly better than the market, but they did so **consistently over time** by focusing on fundamentals. Those small annual differences quickly compounded into huge market gains for the good to great companies. 
+
+![](https://i1.wp.com/www.themastermindwithin.com/wp-content/uploads/2017/11/good-to-great-companies.gif?resize=585%2C319&ssl=1)
+
+We will spend a lot of time this semester looking at program effects, how we can identify them, and how we can contextualize them to understand not just whether our results are statistically significant, but whether they are practically important as well. In each study practice trying to make sense of the practical implications of a program intervention. Does it impact a stock or a flow? Is the effect small or large? 
 
 
 <br>

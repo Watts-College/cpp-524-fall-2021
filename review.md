@@ -17,11 +17,14 @@ session:
   sample-code: 'https://www.dropbox.com/s/lm2g0jlzlo14zu9/tests-for-group-equivalence.pdf?dl=0' 
 - week3:
   date:  'Mon Nov 1st'  
-  video: ''
-  password: ''
-  sample-code: '' 
+  video: 'https://asu.zoom.us/rec/share/p8TiEF_bebh0gotPrP5tviUV4aNgD9ac_ddVVSADN2CK0FYUjQxt1U6fsY0GcyrX.CbAFd590xYA3WQuc'
+  password: 'kkp$6uW8'
+- week4:
+  date:  'Mon Nov 8th'  
+  video: 'https://asu.zoom.us/rec/share/OD8ucsDv_oyFo3tNGKSG_7Z7sjPMapiiLlDxd3hkjizSCXkYSkNnj3rjM-TGHXts.3le89V_Edu36ZCoK'
+  password: 'FgkL3?q3'
+  sample-code: 'https://www.youtube.com/watch?v=zk6gOeggViw' 
   session-code: '' 
-
 ---
 
 
