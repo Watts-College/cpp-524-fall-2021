@@ -25,6 +25,10 @@ session:
   password: 'FgkL3?q3'
   sample-code: 'https://www.youtube.com/watch?v=zk6gOeggViw' 
   session-code: '' 
+- week5:
+  date:  'Mon Nov 15th'  
+  video: 'https://asu.zoom.us/rec/share/WSEvuaT68K_bF_3b95cDrVgBAlpwObrVYslh0wFg_qhdOp4sc3V27A5XXYqiturU.Su_NQSrwhhMOStIX'
+  password: '&Lx#pD1k'
 ---
 
 
