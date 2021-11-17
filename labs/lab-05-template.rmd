@@ -93,7 +93,8 @@ text( 50, 3.7, "Start of \nTreatment \nPeriods", col="darkred" )
 
 
 
-# Reflexive (Pre-Post) Estimator
+# Reflexive Pre-Post Estimator (T2-T1)
+
 
 
 ```{r, fig.height=8, fig.width=8, echo=F}
@@ -147,9 +148,17 @@ stargazer( m, type=s.type,
 
 **What is the average score for kids in the treatment group in period 1 of the study? What is the average score for the same kids in period 2?** 
 
-## Question 2a
+**Note, you can check your answers against the group means in Table 2 above.**
 
-**What is the effect size in this model?** 
+
+## Question 1b
+
+**Explain what it means when b0 is statistically significant in the reflexive model. Explain what it means when b1 is statistically significant.** 
+
+## Question 1c
+
+**What is the effect size according to this model?** 
+
 
 <br>
 <hr>
@@ -208,16 +217,13 @@ stargazer( m, type=s.type,
 
 **What is the average score for kids in the control group in period 1 of the study? What is the average score for the same kids in period 2?** 
 
+
 ## Question 2b
 
-**Explain what it means when b0 is statistically significant in the reflexive model. Explain what it means when b1 is statistically significant.** 
+**Which coefficient represents the test for whether we observe a secular trend in student achievement gains independent of the treatment? What is the decision rule?**
+
 
 ## Question 2c
-
-**What is the test for whether we observe a secular trend in student achievement gains independent of the treatment?**
-
-
-## Question 2d
 
 **What does this model tell us about the appropriateness of the reflexive model?**
 
@@ -227,7 +233,7 @@ stargazer( m, type=s.type,
 
 
 
-# Post-Test Only Estimator
+# Post-Test Only Estimator (T2-C2)
 
 
 ```{r, fig.height=8, fig.width=8, echo=F}
@@ -281,12 +287,24 @@ stargazer( m, type=s.type,
 
 ## Question 3a
 
-**What is the effect size identified by the model?**
+**What is the average score for kids in the control group in the study? What is the average score for the kids in the treatment group?** 
+
+**Note, you can check your answers against the group means in Table 2 above.**
 
 
 ## Question 3b
 
+**What is the effect size identified by the model?**
+
+
+## Question 3c
+
 **What is the identifying assumption of this model? Or stated differently, what must be true in order for the post-test only estimator to be appropriate?**
+
+
+## Question 3d
+
+**According to the model below is the assumption met? How can you tell?**
 
 
 ![](figures/post-test-only.png)
@@ -312,7 +330,11 @@ stargazer( m, type=s.type,
 
 
 
-# Diff-in-Diff Estimator 
+# Diff-in-Diff Estimator [ gains - trend ]
+
+Total Gains: T2-T1  
+Trend: C2-C1  
+DID Estimator: [ gains - trend ] = [ (T2-T1) - (C2-C1) ]   
 
 
 ```{r, fig.height=8, fig.width=8, echo=F}
@@ -484,7 +506,7 @@ stargazer( m, type=s.type,
 
 ## Question 6b
 
-**Does the diff-in-diff model require that study groups are equivalent prior to treatment to generate valid results? If not, what is the identification assumption of this model?**
+**Does the diff-in-diff model require that study groups are equivalent prior to treatment to generate valid results?**
 
 
 ## Question 6c
@@ -496,6 +518,9 @@ stargazer( m, type=s.type,
 
 **The treatment effects from this model are approximately the same as the previous diff-in-diff model, even though they use very different comparison groups. Why does this model still work using the high SES group?**
 
+## Question 6e
+
+**What is the identification assumption of the diff-in-diff model?**
 
 <br>
 <hr>
