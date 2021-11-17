@@ -307,8 +307,6 @@ stargazer( m, type=s.type,
 **According to the model below is the assumption met? How can you tell?**
 
 
-![](figures/post-test-only.png)
-
 ```{r, results="asis"}
 dm <- filter( d, 
               group %in% c("treatment","control") &
