@@ -33,6 +33,10 @@ session:
   date:  'Mon Nov 22nd'  
   video: 'https://asu.zoom.us/rec/share/fQvQK3fUpisD_IjS8wX6fuBbTcWXoHKkGfu9bd8DTv8FOeOdaQzShpJcMC0B1zfx.etjYz3Yim9794vke'
   password: 'PGs8W.xX'  
+- week7:
+  date:  'Mon Nov 29th'  
+  video: 'https://asu.zoom.us/rec/share/4XalKt9hEVk6unrx4nSfgD8i3hZD6ic6V9fRpl7U_xrFVWhJ1bTgW2tD0CgbIM1S.p7FiXPou9gTQR6bD'
+  password: 'NE=tbM6n'   
 ---
 
 
