@@ -1,5 +1,5 @@
 ---
-title: "Lab 05 - The Wage Gap Model"
+title: "Estimating the Wage Gap"
 output:
   html_document:
     theme: readable
@@ -16,59 +16,6 @@ output:
 knitr::opts_chunk$set( echo = TRUE, message = F, warning = F )
 options(getClass.msg=FALSE)
 ```
-
-
-## The Take-Away
-
-Let's start with the end and work backwards so you know where to focus your attention. 
-
-* If you have panel data and a large enough sample you can estimate your model in many different ways.
-* We will look at the same research question using the three different estimators.
-  - post-test only 
-  - reflexive 
-  - pre-post with comparison 
-* Each estimator will produce a very different answer to the same question. 
-* Your job is to choose which model provides the most defensible counterfactual. 
-
-
-We get the following measures from each estimate: 
-
-> T2 - C2  ::  wage gap = **32%** 
-> 
-> T2 - T1  ::  wage gap = **6%**
-> 
-> (T2-T1) - (C2-C1)  ::  wage gap = **3%**
-
-
-Note that the estimates differ by a magnitude of 10!
-
-Which provides the most defensible counterfactual? 
-
-
-
-
-### Regression vs Research Design
-
-The goal of this exercise is to emphasize the connections between the course work on regression mechanics you completed last term, and the research design content you have learned this term. 
-
-Although they are distinct skills - one is a set of mathematical models and another is more like a logical reasoning exercise. But they are powerful together when they are synthesized effectively. 
-
-One take-away from the exercise is that any time you run a regression and interpret a test of statistical significance for one of the coefficients you are implicitly leveraging one of the three estimators we have discussed this term. You will be much more effective as an analyst if you are able to explicitly identify and select the most appropriate estimator, then design your regression model to capture the estimator instead of running the most strait-forward model and allowing the choice to remain implicit. 
-
-Another learning objective is strengthening your ability to identify the counterfactual and evaluate whether enough assumptions have been met for the counterfactual to be meaningful in a given context. 
-
-The lab also serves as a preview of the types of labs you will have next term in CPP 525. As you get more practice with regression you will realize the real skill that differentiates you from other analysts is the ability to create models that capture the most robust and defensible counterfactuals, and ensure your interpretation captures program impact correctly. 
-
-It is common for unskilled analysts to use models they don't fully understand and to look for the coefficient associated with the policy variable without understanding the way each model captures the counterfactual. 
-
-A dummy variable for the treatment group might measure two completely different things in two different models depending upon what other coefficients are included in the models, as you will see below. 
-
-Learn to take a step back, think about how you would ideally construct a counterfactual in a model, then ask whether your current model is generating the correct estimate of program impact. Examples like this will help you appreciate how powerful regression can be when used with knowledge and intent. 
-
-
-<br>
-<hr>
-<br>
 
 
 ## The Policy Problem 
@@ -93,45 +40,86 @@ It is your job as the expert analyst to design an evaluation that will provide s
 
 <br> 
 
+### Aside on "Gender"
 
-### Decomposing the Wage Gap 
+This lab draws on literature on the "gender wage gap". The language around *gender* is imprecise and outdated. We know that gender and biological sex are different constructs, and that neither are perfectly binary. 
 
-The case depends entirely on the ability to identify pay discrimination. It is important to note that the presence of a pay gap does not mean that discrimination has occurred. 
+For the purpose of this work we acknowledge the limitations of both the constructs and the language around gender vs sex and treating male/female as binary. This research should be considered an imperfect jumping off point that can be further refined when better data is available. 
 
-Conceptually, we can break the pay gap into three component parts. Two of these parts result from sorting processes into high-paying and low-paying CEO positions. Evidence suggests that some of this sorting occurs by choice. For example, women graduating from top MBA programs receive several offers and could go into the highest-paying, most-competitive sectors. Instead, they often exhibit a preference for jobs that trade income for flexibility. 
-
-![](figures/gender-pay-gap-components.png)
-
-Part of the sorting is due to the fact that men are perceived to be better prepared for leadership positions in large organizations. This might happen at the stage of identifying talent in early stages of careers and providing mentoring and training that prepares people for leadership positions. Part of is occurs during the interview process, when genderized perceptions of leadership can disadvantage candidates. 
-
-The third component occurs after someone is hired for a position. It is at this point that pay structure is set for people in leadership positions, often reflecting past experience, opportunity costs for the candidate, and the perceived value they will bring to the organization. This is where pay discrimination would occur - when the committees that determine the salary offers systematically pay one class (women) lower than their equally-qualified male counterparts. 
-
-This typically occurs as a result of things like implicit bias or different negotiation tactics, not any malicious intent. Intent is not necessary for discrimination to occur, though. 
-
-The overall pay gap will be a function of these three components. DIfferent industries or organizations will exhibit different mixes of each:
-
-
-![](figures/gender-pay-discrimination.png)
-
-
-A large observed pay gap can motivate a group to explore whether discrimination has occurred, but a large gap can exist without discrimination as well. 
-
-Or more precisely, this case is interested in pay discrimination. The component of the gap that results from discriminatory **hiring** practices would require a different study to separate voluntary sorting from gatekeeping in firms. 
+For example, [Apple Magic Sauce](https://applymagicsauce.com/demo) can predict your gender continuum from your tweets or Facebook posts. Gender is measured on a scale of 1 (completely masculine) to 100 (completely feminine) with most people falling somewhere inbetween and a score of 50 representing an androgynous gender identity. Public text like Twitter data could be used to assign a gender score to each CEO and replicate this study using a fluid instead of binary version of gender. These innovations are welcome! 
 
 <br>
 
 
-### Defining the 'Treatment'
+### Gender as a Treatment 
 
-There is no real treatment in this study, no intervention that is used to create change. Gender is a fixed characteristic (as far as the study goes), and we have no control over hiring decisions. 
+Note that this study differs from other studies where the treatment (male in this case) and control (female) can be assigned. In this study gender is pre-determined and static, so we have no control over assignment of the treatment group (we could not convince CEOs to undergo gender reassignment for the study). 
 
-The counterfactual framework, however, is still meaningful. In any hiring decision when we observe the salary of a new CEO the counterfactual would describe the salary offer for a candidate that had the same qualifications but was the opposite gender. 
+We often use a perfect experiment (RCT) as an intellectual jumping-off point to think about research design. There are lots of interesting cases where we want to examine the impact of a non-assignable type of treatment. In these cases we need to be very clever about research design to make sure we are estimating the effects of the group and not differences in how group members behave. 
 
-For convenience we can refer to one gender as the "treatment" and one as the "control". I have picked male to represent the treatment group here only because we know salaries will be higher and we typically expect the treatment group to perform better, so it makes it easier to keep track of results. 
+For example, researchers have used Uber data to study the wage gap because pay is assigned by an algorithm that does not know the gender of individual drivers and thus can by design not be implicitly or explicitly biased in paying male or female drivers differently. Observed differences in hourly pay result from behavior or performance only. One interesting finding, for example - men drive faster than women, and thus make slightly more. 
 
-It helps to think about the unit of analysis being the firm, which would allow the subject to be part of either the treatment or control group them. In an RCT you would be assigning CEOs to organizations, holding qualifications constant (picking from a pool of equally-qualified candidates) but randomizing on gender. 
+Other examples include studies that send identical resumes to job ads but vary the name on the resume, using names that are clearly black or clearly white. Since all of the qualifications (schools, degrees, age, past performance at previous jobs) are identical except the name, one can claim that differences in response rates are entirely a function of race and not other considerations. 
 
-Since we have panel data we can then leverage changes in the data to approximate a treatment scenario. By isolating transitions in the data we can compare firms that hire a new CEO with the same gender to those that hire a new CEO with the opposite gender. Although not perfect, using changes in the data to approximate treatment effects will be a huge improvement over trying to do a brute-force cross-sectional model with lots of controls. 
+The thought experiment here would be two identical candidates for a CEO job, one a man, one a woman, but otherwise qualifications are the same. Would the typical CEO salary offer for the two candidates differ because of gender? 
+
+<br>
+
+
+## The Take-Away
+
+Let's start with the end and work backwards so you know where to focus your attention. 
+
+* If you have panel data and a large enough sample you can estimate your model in many different ways.
+* We will look at the same research question using the three different estimators.
+  - post-test only 
+  - reflexive 
+  - pre-post with comparison 
+* Each estimator will produce very different answers. 
+* Your job is to explain what each estimator represents, then choose which estimator provides the most defensible counterfactual for measuring the discrimination piece of the wage gap. 
+
+
+We get the following measures from each estimate: 
+
+> T2 - C2  ::  wage gap = **32%** 
+> 
+> T2 - T1  ::  wage gap = **6%**
+> 
+> (T2-T1) - (C2-C1)  ::  wage gap = **3%**
+
+
+Note that the estimates differ by a magnitude of 10!
+
+Which estimator best captures discrimination?  
+
+
+
+
+### Regression vs Research Design
+
+The goal of this exercise is to emphasize the connections between the course work on regression mechanics you completed last term, and the research design content you have learned this term. 
+
+Although they are distinct skills - one is a set of mathematical models and another is more like a logical reasoning exercise. But they are powerful together when they are synthesized effectively. 
+
+One take-away from the exercise is that any time you run a regression and interpret a test of statistical significance for one of the coefficients you are implicitly leveraging one of the three estimators we have discussed this term. You will be much more effective as an analyst if you are able to explicitly identify and select the most appropriate estimator, then design your regression model to capture the estimator instead of running the most strait-forward model and allowing the choice to remain implicit. 
+
+Another learning objective is strengthening your ability to identify the counterfactual and evaluate whether enough assumptions have been met for the counterfactual to be meaningful in a given context. 
+
+**It is all too common for unskilled analysts to use models they don't fully understand, then simply to look for the coefficient associated with the policy variable without understanding the counterfactual encoded in the model.** 
+
+A dummy variable for the treatment group might measure two completely different things in two different models depending upon what other coefficients are included in the models, as you will see below. 
+
+Learn to take a step back, think about how you would ideally construct a counterfactual, then ask whether your current model is generating the correct estimate of program impact. 
+
+Examples like this will help you appreciate how powerful regression can be when used with knowledge and intent. 
+
+
+<br>
+<hr>
+<br>
+
+
+
 
 
 
@@ -219,120 +207,6 @@ dollarize <- function(x)
 
 
 
-### Aside on Specification
-
-Skew is pretty ubiquitous in economic data like income, profit margins in companies, venture capital raised by start-ups, and GDP of countries. These data reflect a winner-take-most process much more than an equitable distribution of resources. You will observe a large proportion of cases 
-
-We can see evidence for this in the summary statistics: 
-
-```{r, echo=T}
-summary.table <- summary( d$TOTCOMP )   
-summary.table[] <- summary.table %>% dollarize() 
-summary.table %>% pander()
-```
-
-And also in the visualization of the distributions: 
-
-
-```{r, fig.width=10, fig.height=4}
-par( mfrow=c(1,2) )
-
-hist( d$TOTCOMP, breaks=100, 
-      col="darkgray", border="white", 
-      yaxt="n", ylab="" )
-hist( log(d$TOTCOMP), breaks=100, 
-      col="darkgray", border="white", 
-      yaxt="n", ylab="" )
-```
-
-The logged models will be a lot more reliable in this case because the log transformation reduces skew and kurtosis in the data, which in turn reduces the leverage of outliers on coefficients. 
-
-
-The log transformation will bring the outliers closer to the mean and thus mitigate their impact when fitting models. The outliers can also make standard errors larger or smaller than they should be, so inferences will also be more reliable once skew has been removed from the data. 
-
-
-```{r, fig.width=10}
-par( mfrow=c(1,2) )
-plot( as.factor(d$gender), d$TOTCOMP, xlab="", ylab="Income"  )
-plot( as.factor(d$gender), log(d$TOTCOMP), xlab="", ylab="Logged Income"  )
-```
-
-<br>
-
-![](figures/skew-kurtosis.jpg)
-
-*Image source: https://www.excelr.com/skewness-and-kurtosis-in-data-science* 
-
-<br>
-<br>
-
-### Interpretting Log-Linear Models 
-
-Recall from last semester that the coefficients of log-linear models are interpreted as a percent change in Y as a result of a one-unit change in X. 
-
-In this case X is a binary variable for male, so a one-unit change is the difference between the reference category (female) and the "treatment group" male:
-
-```{r}
-# salary ceo female: $90,000
-# salary ceo male: $100,000
-
-# PERCENT CHANGE
-( 100 - 90 ) / 100
-
-# LOG APPROXIMATION 
-log( 100 ) - log( 90 )
-```
-
-For reference only, here is the math: 
-
-
-```{r}
-# salary ceo female: $90,000
-# salary ceo male: $100,000
-
-# LINEAR MODEL: 
-# Y = b0 + b1(male)
-
-# salary_female (omitted category)
-b0 <- 90000
-b1 <- 10000
-
-# female salary (base group): b0
-b0
-
-# male salary: b0 + b1
-b0 + b1
-
-
-
-
-# b0 = salary_female
-# salary_male = b0 + b1
-# salary_male = salary_female + b1
-# b1 = salary_male - salary_female
-
-# LOG-LINEAR MODEL: 
-# log(Y) = b0 + b1(male)
-# b1 = log(salary2) - log(salary1)
-
-b0 <- log(90000)
-b1 <- log(100000) - log(90000)
-
-# coefficients in log-linear model:
-b0
-b1
-
-# note b1 approximates % difference 
-# of salary_male to salary_female
-(100000 - 90000 ) / 100000
-
-# compare to:
-b1
-
-# recovering base salaries
-exp( b0 )
-exp( b0 + b1 )
-```
 
 
 
@@ -684,6 +558,218 @@ m2  <- lm( log(TOTCOMP) ~ male + log.emp + log.revenue + subsector - 1, data=m.d
 memisc::mtable( m1, m2, summary.stats=c("N") )
 
 ```
+
+
+
+
+
+
+
+### Aside on Specification
+
+Skew is pretty ubiquitous in economic data like income, profit margins in companies, venture capital raised by start-ups, and GDP of countries. These data reflect a winner-take-most process much more than an equitable distribution of resources. You will observe a large proportion of cases 
+
+We can see evidence for this in the summary statistics: 
+
+```{r, echo=T}
+summary.table <- summary( d$TOTCOMP )   
+summary.table[] <- summary.table %>% dollarize() 
+summary.table %>% pander()
+```
+
+And also in the visualization of the distributions: 
+
+
+```{r, fig.width=10, fig.height=4}
+par( mfrow=c(1,2) )
+
+hist( d$TOTCOMP, breaks=100, 
+      col="darkgray", border="white", 
+      yaxt="n", ylab="" )
+hist( log(d$TOTCOMP), breaks=100, 
+      col="darkgray", border="white", 
+      yaxt="n", ylab="" )
+```
+
+The logged models will be a lot more reliable in this case because the log transformation reduces skew and kurtosis in the data, which in turn reduces the leverage of outliers on coefficients. 
+
+
+The log transformation will bring the outliers closer to the mean and thus mitigate their impact when fitting models. The outliers can also make standard errors larger or smaller than they should be, so inferences will also be more reliable once skew has been removed from the data. 
+
+
+```{r, fig.width=10}
+par( mfrow=c(1,2) )
+plot( as.factor(d$gender), d$TOTCOMP, xlab="", ylab="Income"  )
+plot( as.factor(d$gender), log(d$TOTCOMP), xlab="", ylab="Logged Income"  )
+```
+
+<br>
+
+![](figures/skew-kurtosis.jpg)
+
+*Image source: https://www.excelr.com/skewness-and-kurtosis-in-data-science* 
+
+<br>
+<br>
+
+### Interpretting Log-Linear Models 
+
+Recall from last semester that the coefficients of log-linear models are interpreted as a percent change in Y as a result of a one-unit change in X. 
+
+In this case X is a binary variable for male, so a one-unit change is the difference between the reference category (female) and the "treatment group" male:
+
+```{r}
+# salary ceo female: $90,000
+# salary ceo male: $100,000
+
+# PERCENT CHANGE
+( 100 - 90 ) / 100
+
+# LOG APPROXIMATION 
+log( 100 ) - log( 90 )
+```
+
+For reference only, here is the math: 
+
+
+```{r}
+# salary ceo female: $90,000
+# salary ceo male: $100,000
+
+# LINEAR MODEL: 
+# Y = b0 + b1(male)
+
+# salary_female (omitted category)
+b0 <- 90000
+b1 <- 10000
+
+# female salary (base group): b0
+b0
+
+# male salary: b0 + b1
+b0 + b1
+
+
+
+
+# b0 = salary_female
+# salary_male = b0 + b1
+# salary_male = salary_female + b1
+# b1 = salary_male - salary_female
+
+# LOG-LINEAR MODEL: 
+# log(Y) = b0 + b1(male)
+# b1 = log(salary2) - log(salary1)
+
+b0 <- log(90000)
+b1 <- log(100000) - log(90000)
+
+# coefficients in log-linear model:
+b0
+b1
+
+# note b1 approximates % difference 
+# of salary_male to salary_female
+(100000 - 90000 ) / 100000
+
+# compare to:
+b1
+
+# recovering base salaries
+exp( b0 )
+exp( b0 + b1 )
+```
+
+
+## Lab Setup
+
+This lab focuses on the conceptual interpretation of study design, as opposed to the interpretation of regression tables. 
+
+Specifically, you are invited to explore the operationalization of the concept of the wage gap. It can be decomposed into different meaningful components. 
+
+* Certain industries are "gendered", meaning that workers in the industry have historically been predominantly one gender. Industry pay reflects values of a society or historical path-dependencies related to that profession (teaching in primary schools in the past was quasi-voluntary work that did not require credentials), but not discrimination at the organizational level. 
+* Women make different career choices than men, such as selecting jobs with more flexibility and less pay. These are choices that reflect individual preferences and do not constitute discrimination, per se. The origins of preferences is a separate but consequential topic. 
+* Discriminatory pay practices are specifically instances where two people perform the same work and receive different pay, and differences are systematic by some protected class status. "Same work" is typically operationalized by job title within an organization. 
+
+In this case we are asked to estimate the level of **wage discrimination** in the sector. 
+
+
+### Decomposing the Wage Gap 
+
+The case depends entirely on the ability to identify pay discrimination. It is important to note that the presence of a pay gap does not mean that discrimination has occurred. 
+
+Conceptually, we can break the pay gap into three component parts. Two of these parts result from sorting processes into high-paying and low-paying CEO positions. Evidence suggests that some of this sorting occurs by choice. For example, women graduating from top MBA programs receive several offers and could go into the highest-paying, most-competitive sectors. Instead, they often exhibit a preference for jobs that trade income for flexibility. 
+
+![](figures/gender-pay-gap-components.png)
+
+Part of the sorting is due to the fact that men are *perceived to be* better prepared for leadership positions in large organizations (this assumption is not supported by data but persists). This might happen at the stage of identifying talent in early stages of careers and providing mentoring and training that prepares people for leadership positions. Part of it occurs during the interview process, when genderized perceptions of leadership can disadvantage candidates. 
+
+The third component occurs after someone is hired for a position. It is at this point that pay structure is set for people in leadership positions, often reflecting past experience, opportunity costs for the candidate, and the perceived value they will bring to the organization. 
+
+This stage is where pay discrimination would occur - when the committees that determine the salary offers systematically pay one class (women) lower than their equally-qualified male counterparts. 
+
+This typically occurs as a result of things like implicit bias or different negotiation tactics, not any malicious intent. Intent is not necessary for discrimination to occur. 
+
+Different industries or organizations will exhibit different mixes of each of these three components:
+
+
+![](figures/gender-pay-discrimination.png)
+
+
+A large observed pay gap can motivate a group to explore whether discrimination has occurred, but a large gap can exist without discrimination as well. 
+
+Or more precisely, this case is interested in **pay discrimination**. The component of the gap that results from **discriminatory or unfair hiring** practices would require a different study to separate voluntary sorting from gatekeeping in firms. 
+
+<br>
+
+
+## Lab Questions 
+
+### Defining the 'Treatment'
+
+There is no real treatment in this study, no intervention that is used to create change. Gender is a fixed characteristic (as far as the study goes), and we have no control over hiring decisions. 
+
+The counterfactual framework, however, is still meaningful. In any hiring decision when we observe the salary of a new CEO the counterfactual would describe the salary offer for a candidate that had the same qualifications but was the opposite gender. 
+
+For convenience we can refer to one gender as the "treatment" and one as the "control". I have picked male to represent the treatment group here only because we know salaries will be higher and we typically expect the treatment to increase performance or resources. So it is cognitively consistent but otherwise arbitrary. 
+
+**Thought Experiments:**
+
+When tackling a hard research design problem it is often useful to start with a thought simulation - what would the ideal experiment look like in this study? 
+
+If we want to isolate the effect of gender on CEO pay, what is the counterfactual? 
+
+It helps to think about the unit of analysis being the firm, which would allow the subject to be part of either the treatment or control group them. In an RCT you would be assigning CEOs to organizations, holding qualifications constant (picking from a pool of equally-qualified candidates) but randomizing on gender. 
+
+Since we have panel data we can then leverage changes in the data to approximate a treatment scenario. By isolating transitions in the data we can compare firms that hire a new CEO with the same gender to those that hire a new CEO with the opposite gender. Although not perfect, using changes in the data to approximate treatment effects will be a huge improvement over trying to do a brute-force cross-sectional model with lots of controls. 
+
+
+### Decomposing the Wage Gap 
+
+The case depends entirely on the ability to identify pay discrimination. It is important to note that the presence of a pay gap does not mean that discrimination has occurred. 
+
+Conceptually, we can break the pay gap into three component parts. Two of these parts result from sorting processes into high-paying and low-paying CEO positions. Evidence suggests that some of this sorting occurs by choice. For example, women graduating from top MBA programs receive several offers and could go into the highest-paying, most-competitive sectors. Instead, they often exhibit a preference for jobs that trade income for flexibility. 
+
+![](figures/gender-pay-gap-components.png)
+
+Part of the sorting is due to the fact that men are perceived to be better prepared for leadership positions in large organizations. This might happen at the stage of identifying talent in early stages of careers and providing mentoring and training that prepares people for leadership positions. Part of is occurs during the interview process, when genderized perceptions of leadership can disadvantage candidates. 
+
+The third component occurs after someone is hired for a position. It is at this point that pay structure is set for people in leadership positions, often reflecting past experience, opportunity costs for the candidate, and the perceived value they will bring to the organization. This is where pay discrimination would occur - when the committees that determine the salary offers systematically pay one class (women) lower than their equally-qualified male counterparts. 
+
+This typically occurs as a result of things like implicit bias or different negotiation tactics, not any malicious intent. Intent is not necessary for discrimination to occur, though. 
+
+The overall pay gap will be a function of these three components. DIfferent industries or organizations will exhibit different mixes of each:
+
+
+![](figures/gender-pay-discrimination.png)
+
+
+A large observed pay gap can motivate a group to explore whether discrimination has occurred, but a large gap can exist without discrimination as well. 
+
+Or more precisely, this case is interested in pay discrimination. The component of the gap that results from discriminatory **hiring** practices would require a different study to separate voluntary sorting from gatekeeping in firms. 
+
+<br>
+
 
 
 

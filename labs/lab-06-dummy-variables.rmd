@@ -1,0 +1,208 @@
+---
+title: "Hypothesis Testing"
+output:
+  html_document:
+    theme: readable
+    df_print: paged
+    highlight: tango
+    toc: yes
+    toc_float: no
+    css: 'lab-instructions.css'
+    includes:
+      after_body: 'footer.html'
+--- 
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set( echo=TRUE, warning=F, message=F )
+```
+
+
+## Overview 
+
+This lab is a review of hypothesis-testing with dummy variables, concepts covered in CPP 523 in the lecture [Dummy Variables and Hypothesis Tests](https://github.com/Watts-College/cpp-524-fall-2021/raw/main//pubs/hypotheses-tests-with-dummy-variables.pdf).
+
+Specifically, the lab reminds us that when we construct groups using dummy variables we will always have a reference group captured by the intercept, and all dummy coefficients represents contrasts with that baseline group. 
+
+![](figures/dummy-hypotheses.png) 
+
+
+
+
+In the scenario where we have four groups we can test up to six hypotheses with our data, but we can at most test three at a time in any given model. Therefore we must select a reference group and dummy variables that correspond with the hypotheses of interest. 
+
+![](figures/all-hypotheses.png) 
+
+This lab uses a fake data set based upon the example of Regular and Teach for America instructors in the lecture notes. Regular instructors have a college degree in education, whereas Teach for America instructors have college degrees in fields other than education, but get credentialed in education through an immersion program that includes specialized training and mentoring. 
+
+Your job is to select a model that aligns with the hypothesis of interest in each question. 
+
+
+
+## Setup 
+
+```{r}
+library( dplyr )     # data wrangling
+library( pander )    # formatting 
+library( stargazer ) # pretty regression tables 
+```
+
+
+```{r}
+d <- read.csv( "data/teach-for-america.csv" )
+head( d ) %>% pander()
+```
+
+```{r}
+d %>% 
+  group_by( teacher, school ) %>% 
+  summarize( ave.score=mean(score) ) %>% 
+  ungroup() %>% 
+  pander( digits=0 )
+```
+
+
+
+## Question 1
+
+Run baseline model comparing performance of reg to tfa. do not control for school geography. 
+
+$score = b_0 + b_1 \cdot tfa.dummy$
+
+
+```{r, results="asis"}
+m0 <- lm( score ~ tfa.dummy, data=d )
+
+stargazer( m0, 
+           type="html", digits=3,
+           intercept.bottom = FALSE,
+           omit.stat = c("ser","f","rsq","adj.rsq") )
+```
+
+
+Do we find differences in performance across teacher types? 
+
+This is an example of **Simpson's Paradox**. When you have unequal group sizes (the number of observations per group) and you aggregate groups for a comparison, you can introduce bias into your comparisons. 
+
+```{r}
+tapply( d$score, d$teacher, mean ) %>% round(0) %>% pander()
+```
+
+Even when we know they exist: 
+
+```{r}
+tapply( d$score, list(d$teacher,d$school), mean ) %>% round(0) %>% pander()
+```
+
+This occurs specifically in our sample because TFA instructors are more likely to work in urban schools and Regular instructors are more likely to work in suburban schools: 
+
+```{r}
+table( d$teacher, d$school ) %>% pander()
+```
+
+In other words, Simpson's Paradox is another word for a selection problem. If we don't account for the selection process (in this instance by controlling for school geography) then we will improperly conclude there is no performance difference between teacher type. 
+
+In reality, TFA and Regular instructors perform the same in suburban schools. But TFA instructors perform better in urban schools. 
+
+
+## Question 2
+
+Consider the following models:  
+
+$Model \space (1): \space \space score = b_0 + b_1 \cdot tfa + b_2 \cdot suburban$
+
+$Model \space (2): \space \space score = b_0 + b_1 \cdot tfa + b_2 \cdot suburban + b_3 \cdot tfa \cdot suburban$
+
+*Note that we use a colon instead of multiplication sign to interact coefficients in the R lm() syntax:*
+
+
+```{r, results="asis"}
+m1 <- lm( score ~ tfa.dummy + sub.dummy, data=d )
+m2 <- lm( score ~ tfa.dummy + sub.dummy + tfa.dummy:sub.dummy, data=d )
+
+stargazer( m1, m2, 
+           type="html", digits=3,
+           intercept.bottom = FALSE,
+           omit.stat = c("ser","f","rsq","adj.rsq") )
+```
+
+--------  
+
+Calculate the four group means with regression coefficients from **Model (1)**:
+
+* **Q2-a**: b0 = regular urban teachers 
+* **Q2-b**: b0 + b1 = tfa urban teachers  
+* **Q2-c**: b0 + b2 = regular suburban teachers  
+* **Q2-d**: b0 + b1 + b2 = tfa surburban teachers  
+
+--------
+
+<br>
+
+Are any of these means correct? Here is the table of group means for reference: 
+
+```{r}
+tapply( d$score, list(d$teacher,d$school), mean ) %>% round(0) %>% pander()
+```
+
+## Question 3
+
+Now calculate the four group means with coefficients from **Model (2)**:
+
+* **Q3-a**: b0 = regular urban teachers 
+* **Q3-b**: b0 + b1 = tfa urban teachers   
+* **Q3-c**: b0 + b2 = regular suburban teachers  
+* **Q3-d**: b0 + b1 + b2 + b3 = tfa surburban teachers 
+
+Are these means correct? 
+
+----------
+
+
+
+
+## Question 4
+
+Explain the hypothesis associated with each coefficient:
+
+* **Q4-a**: b0 ?  
+* **Q4-b**: b1 ?  
+* **Q4-c**: b2 ?  
+* **Q4-d**: b3 ?  
+
+
+## Question 5
+
+Now run a model comparing teacher performance in urban schools. 
+
+$Model \space (3): \space \space score = b_0 + b_1 \cdot tfa + b_2 \cdot urban + b_3 \cdot tfa \cdot urban$
+
+```{r, results="asis"}
+
+m3 <- lm( score ~ tfa.dummy + urb.dummy + tfa.dummy:urb.dummy, data=d )
+
+stargazer( m3, 
+           type="html", digits=3,
+           intercept.bottom = FALSE,
+           omit.stat = c("ser","f","rsq","adj.rsq") )
+```
+
+* **Q5-a**: What does baseline group b0 represent? 
+* **Q5-b**: which coefficient represents our hypothosis of interest? 
+* **Q5-b**: What does b3 test? 
+
+
+## Question 6
+
+**Q6-a**: which model allows us to test whether Regular instructors perform differently in urban versus suburban schools? 
+
+**Q6-b**: which model allows us to test whether TFA instructors perform differently in urban versus suburban schools? 
+
+
+
+<br>
+<br>
+<hr>
+<br>
+<br>
+
