@@ -1,0 +1,171 @@
+---
+title: "Hypothesis Testing"
+output:
+  html_document:
+    theme: readable
+    df_print: paged
+    highlight: tango
+    toc: yes
+    toc_float: no
+--- 
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set( echo=TRUE, warning=F, message=F )
+```
+
+
+
+## Setup 
+
+```{r}
+library( dplyr )     # data wrangling
+library( pander )    # formatting 
+library( stargazer ) # pretty regression tables 
+```
+
+
+```{r}
+d <- read.csv( "https://raw.githubusercontent.com/Watts-College/cpp-524-fall-2021/main/labs/data/teach-for-america.csv" )
+head( d ) %>% pander()
+```
+
+```{r}
+d %>% 
+  group_by( teacher, school ) %>% 
+  summarize( ave.score=mean(score) ) %>% 
+  ungroup() %>% 
+  pander( digits=0 )
+```
+
+
+
+## Question 1
+
+Run baseline model comparing performance of reg to tfa. do not control for school geography. 
+
+$score = b_0 + b_1 \cdot tfa.dummy$
+
+
+```{r, results="asis"}
+m0 <- lm( score ~ tfa.dummy, data=d )
+
+stargazer( m0, 
+           type="html", digits=3,
+           intercept.bottom = FALSE,
+           omit.stat = c("ser","f","rsq","adj.rsq") )
+```
+
+
+Do we find differences in performance across teacher types? 
+
+<hr>
+
+
+
+## Question 2
+
+Consider the following models:  
+
+$Model \space (1): \space \space score = b_0 + b_1 \cdot tfa + b_2 \cdot suburban$
+
+$Model \space (2): \space \space score = b_0 + b_1 \cdot tfa + b_2 \cdot suburban + b_3 \cdot tfa \cdot suburban$
+
+*Note that we use a colon instead of multiplication sign to interact coefficients in the R lm() syntax:*
+
+
+```{r, results="asis"}
+m1 <- lm( score ~ tfa.dummy + sub.dummy, data=d )
+m2 <- lm( score ~ tfa.dummy + sub.dummy + tfa.dummy:sub.dummy, data=d )
+
+stargazer( m1, m2, 
+           type="html", digits=3,
+           intercept.bottom = FALSE,
+           omit.stat = c("ser","f","rsq","adj.rsq") )
+```
+
+--------  
+
+Calculate the four group means with regression coefficients from **Model (1)**:
+
+* **Q2-a**: b0 = regular urban teachers 
+* **Q2-b**: b0 + b1 = tfa urban teachers  
+* **Q2-c**: b0 + b2 = regular suburban teachers  
+* **Q2-d**: b0 + b1 + b2 = tfa surburban teachers  
+
+--------
+
+<br>
+
+Are any of these means correct? Here is the table of group means for reference: 
+
+```{r}
+tapply( d$score, list(d$teacher,d$school), mean ) %>% round(0) %>% pander()
+```
+
+## Question 3
+
+Now calculate the four group means with coefficients from **Model (2)**:
+
+* **Q3-a**: b0 = regular urban teachers 
+* **Q3-b**: b0 + b1 = tfa urban teachers   
+* **Q3-c**: b0 + b2 = regular suburban teachers  
+* **Q3-d**: b0 + b1 + b2 + b3 = tfa surburban teachers 
+
+Are these means correct? 
+
+----------
+
+
+
+
+## Question 4
+
+Explain the hypothesis associated with each coefficient:
+
+* **Q4-a**: b0 ?  
+* **Q4-b**: b1 ?  
+* **Q4-c**: b2 ?  
+* **Q4-d**: b3 ?  
+
+
+## Question 5
+
+Now run a model comparing teacher performance in urban schools. 
+
+$Model \space (3): \space \space score = b_0 + b_1 \cdot tfa + b_2 \cdot urban + b_3 \cdot tfa \cdot urban$
+
+```{r, results="asis"}
+
+m3 <- lm( score ~ tfa.dummy + urb.dummy + tfa.dummy:urb.dummy, data=d )
+
+stargazer( m3, 
+           type="html", digits=3,
+           intercept.bottom = FALSE,
+           omit.stat = c("ser","f","rsq","adj.rsq") )
+```
+
+* **Q5-a**: What does baseline group b0 represent? 
+* **Q5-b**: which coefficient represents our hypothosis of interest? 
+* **Q5-b**: What does b3 test? 
+
+
+## Question 6
+
+**Q6-a**: which model allows us to test whether Regular instructors perform differently in urban versus suburban schools? 
+
+**Q6-b**: which model allows us to test whether TFA instructors perform differently in urban versus suburban schools? 
+
+## Challenge Question 
+
+What is the minimum number of regression models you need to run to test all six hypotheses in the TFA vs Regular at Urban vs Suburban Schools example? 
+
+Report which models you would run and the hypotheses associated with each coefficient. 
+
+
+<br>
+<br>
+<hr>
+<br>
+<br>
+
