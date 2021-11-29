@@ -31,7 +31,12 @@ Specifically, the lab reminds us that when we construct groups using dummy varia
 
 In the scenario where we have four groups we can test up to six hypotheses with our data, but we can at most test three at a time in any given model. Therefore we must select a reference group and dummy variables that correspond with the hypotheses of interest. 
 
+<hr> 
+
+
 ![](figures/all-hypotheses.png) 
+
+<hr>
 
 This lab uses a fake data set based upon the example of Regular and Teach for America instructors in the lecture notes. Regular instructors have a college degree in education, whereas Teach for America instructors have college degrees in fields other than education, but get credentialed in education through an immersion program that includes specialized training and mentoring. 
 
@@ -53,11 +58,20 @@ d <- read.csv( "https://raw.githubusercontent.com/Watts-College/cpp-524-fall-202
 head( d ) %>% pander()
 ```
 
+* **tfa.dummy** = 1 for all TFA instructors, 0 otherwise 
+* **reg.dummy** = 1 for all Regular instructors, 0 otherwise 
+* **sub.dummy** = 1 for all Suburban schools, 0 otherwise 
+* **urb.dummy** = 1 for all Urban Schools, 0 otherwise 
+
+<br>
+<br>
+
+**Study Group Means:** 
+
 ```{r}
 d %>% 
   group_by( teacher, school ) %>% 
   summarize( ave.score=mean(score) ) %>% 
-  ungroup() %>% 
   pander( digits=0 )
 ```
 
@@ -92,13 +106,15 @@ Do we find differences in performance across teacher types?
 This is an example of [**Simpson's Paradox**](https://en.wikipedia.org/wiki/Simpson%27s_paradox). When you have unequal group sizes (the number of observations per group) and you aggregate groups for a comparison, you can introduce bias into your comparisons. 
 
 ```{r}
-tapply( d$score, d$teacher, mean ) %>% round(0) %>% pander()
+tapply( d$score, d$teacher, mean ) %>% 
+  round(0) %>% pander()
 ```
 
 Even when we know they exist: 
 
 ```{r}
-tapply( d$score, list(d$teacher,d$school), mean ) %>% round(0) %>% pander()
+tapply( d$score, list(d$teacher,d$school), mean ) %>% 
+  round(0) %>% pander()
 ```
 
 This occurs specifically in our sample because TFA instructors are more likely to work in urban schools and Regular instructors are more likely to work in suburban schools: 
@@ -149,7 +165,8 @@ Calculate the four group means with regression coefficients from **Model (1)**:
 Are any of these means correct? Here is the table of group means for reference: 
 
 ```{r}
-tapply( d$score, list(d$teacher,d$school), mean ) %>% round(0) %>% pander()
+tapply( d$score, list(d$teacher,d$school), mean ) %>% 
+  round(0) %>% pander()
 ```
 
 ## Question 3
@@ -170,7 +187,7 @@ Are these means correct?
 
 ## Question 4
 
-Explain the hypothesis associated with each coefficient:
+Explain the hypothesis associated with each coefficient in **Model (2)**:
 
 * **Q4-a**: b0 ?  
 * **Q4-b**: b1 ?  
