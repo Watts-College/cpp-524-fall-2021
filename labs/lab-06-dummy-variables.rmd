@@ -49,7 +49,7 @@ library( stargazer ) # pretty regression tables
 
 
 ```{r}
-d <- read.csv( "data/teach-for-america.csv" )
+d <- read.csv( "https://raw.githubusercontent.com/Watts-College/cpp-524-fall-2021/main/labs/data/teach-for-america.csv" )
 head( d ) %>% pander()
 ```
 
@@ -82,7 +82,14 @@ stargazer( m0,
 
 Do we find differences in performance across teacher types? 
 
-This is an example of **Simpson's Paradox**. When you have unequal group sizes (the number of observations per group) and you aggregate groups for a comparison, you can introduce bias into your comparisons. 
+<hr>
+
+![](figures/tfa-vs-reg.png)
+
+
+<hr> 
+
+This is an example of [**Simpson's Paradox**](https://en.wikipedia.org/wiki/Simpson%27s_paradox). When you have unequal group sizes (the number of observations per group) and you aggregate groups for a comparison, you can introduce bias into your comparisons. 
 
 ```{r}
 tapply( d$score, d$teacher, mean ) %>% round(0) %>% pander()
@@ -198,6 +205,11 @@ stargazer( m3,
 
 **Q6-b**: which model allows us to test whether TFA instructors perform differently in urban versus suburban schools? 
 
+## Challenge Question 
+
+What is the minimum number of regression models you need to run to test all six hypotheses in the TFA vs Regular at Urban vs Suburban Schools example? 
+
+Report which models you would run and the hypotheses associated with each coefficient. 
 
 
 <br>
