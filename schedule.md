@@ -11,6 +11,7 @@ labs:
   lab-03:  'Wednesday, Nov 3rd'
   lab-04:  'Wednesday, Nov 10th'
   lab-05:  'Wednesday, Nov 17th'
+  lab-06:  'Friday, Dec 3rd'
   
 project:
   step-01:  'Saturday, Oct 23rd'
@@ -875,12 +876,7 @@ Some estimators will be valid in this context (will accurately capture program e
 **Due {{page.labs.lab-05}}**
 
 <hr>
-
-
-
-
-
-<hr>
+  
 <br>
 <br>
 
@@ -908,7 +904,28 @@ Some estimators will be valid in this context (will accurately capture program e
 
 
 
+  
+## Lab 06
 
+<hr>
+  
+<a class="uk-button uk-button-default" href="../labs/lab-06-dummy-variables.html">Lab-06 Instructions</a>
+
+<a class="uk-button uk-button-default" href="../labs/lab-06-template.rmd">RMD Template</a>
+
+<a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">Submit Lab</a>
+
+**Due {{page.labs.lab-06}}**
+
+<br>
+
+Lab 6 is an optional lab that you can complete to get more exercise with regression models, or if you missed a previous lab and would like to recover points. 
+
+  
+<hr>
+<br>
+  
+  
 ## Research Design Memo
 
 **Due {{page.final.project}}**
