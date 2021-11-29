@@ -42,7 +42,7 @@ d %>%
 
 ## Question 1
 
-Run baseline model comparing performance of reg to tfa. do not control for school geography. 
+Run baseline model comparing performance of Regular to TFA instructors. Do not control for school geography. 
 
 $score = b_0 + b_1 \cdot tfa.dummy$
 
@@ -57,7 +57,10 @@ stargazer( m0,
 ```
 
 
-Do we find differences in performance across teacher types? 
+> Do we find differences in performance across teacher types? 
+
+**ANSWER:**
+
 
 <hr>
 
@@ -86,33 +89,50 @@ stargazer( m1, m2,
 
 --------  
 
-Calculate the four group means with regression coefficients from **Model (1)**:
+> Calculate the four group means with regression coefficients from **Model (1)**:
 
-* **Q2-a**: b0 = regular urban teachers 
-* **Q2-b**: b0 + b1 = tfa urban teachers  
-* **Q2-c**: b0 + b2 = regular suburban teachers  
-* **Q2-d**: b0 + b1 + b2 = tfa surburban teachers  
+* **Q2-a**: b0 = regular urban teachers = **x**  
+* **Q2-b**: b0 + b1 = tfa urban teachers  = **x**  
+* **Q2-c**: b0 + b2 = regular suburban teachers  = **x** 
+* **Q2-d**: b0 + b1 + b2 = tfa surburban teachers  = **x**  
 
 --------
 
 <br>
 
-Are any of these means correct? Here is the table of group means for reference: 
+> Are any of these means correct? 
+
+**ANSWER:**
+
+
+
+Here is the table of group means for reference: 
 
 ```{r}
 tapply( d$score, list(d$teacher,d$school), mean ) %>% round(0) %>% pander()
 ```
 
+
+
 ## Question 3
 
-Now calculate the four group means with coefficients from **Model (2)**:
+> Now calculate the four group means with coefficients from **Model (2)**:
 
-* **Q3-a**: b0 = regular urban teachers 
-* **Q3-b**: b0 + b1 = tfa urban teachers   
-* **Q3-c**: b0 + b2 = regular suburban teachers  
-* **Q3-d**: b0 + b1 + b2 + b3 = tfa surburban teachers 
+* **Q3-a**: b0 = regular urban teachers  = **x** 
+* **Q3-b**: b0 + b1 = tfa urban teachers   = **x**  
+* **Q3-c**: b0 + b2 = regular suburban teachers  = **x**  
+* **Q3-d**: b0 + b1 + b2 + b3 = tfa surburban teachers  = **x** 
 
-Are these means correct? 
+
+
+> Are these means correct? 
+
+**ANSWER:**
+
+
+> Why do we need to include the interaction term to recover the true group means?  
+
+**ANSWER:**
 
 ----------
 
@@ -121,12 +141,14 @@ Are these means correct?
 
 ## Question 4
 
-Explain the hypothesis associated with each coefficient:
+> Explain the hypothesis associated with each coefficient:
 
-* **Q4-a**: b0 ?  
-* **Q4-b**: b1 ?  
-* **Q4-c**: b2 ?  
-* **Q4-d**: b3 ?  
+* **Q4-a**: b0 **?**  
+* **Q4-b**: b1 **?**  
+* **Q4-c**: b2 **?**    
+* **Q4-d**: b3 **?**   
+
+
 
 
 ## Question 5
@@ -145,16 +167,49 @@ stargazer( m3,
            omit.stat = c("ser","f","rsq","adj.rsq") )
 ```
 
-* **Q5-a**: What does baseline group b0 represent? 
-* **Q5-b**: which coefficient represents our hypothosis of interest? 
-* **Q5-b**: What does b3 test? 
+
+
+> Q5-a: What does baseline group b0 represent? 
+
+**ANSWER:** 
+
+
+
+
+> Q5-b: which coefficient represents our hypothesis of interest? 
+
+**ANSWER:** 
+
+
+
+
+
+> Q5-b: What does b3 test? 
+
+**ANSWER:** 
+
+
+
+
+
+
 
 
 ## Question 6
 
-**Q6-a**: which model allows us to test whether Regular instructors perform differently in urban versus suburban schools? 
+> Q6-a: which model allows us to test whether Regular instructors perform differently in urban versus suburban schools? 
 
-**Q6-b**: which model allows us to test whether TFA instructors perform differently in urban versus suburban schools? 
+**ANSWER:**
+
+
+> Q6-b: which model allows us to test whether TFA instructors perform differently in urban versus suburban schools? 
+
+**ANSWER:**
+
+
+
+
+
 
 ## Challenge Question 
 
@@ -168,4 +223,58 @@ Report which models you would run and the hypotheses associated with each coeffi
 <hr>
 <br>
 <br>
+
+
+
+
+
+
+```{css, echo=F}
+body{
+     font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+     font-size:calc(1.5em + 0.25vw);
+     font-weight:300;line-height:1.65;
+     -webkit-font-smoothing:antialiased;
+     -moz-osx-font-smoothing:grayscale;
+     margin-left:20%;
+     margin-right:20%} 
+     
+
+h1, h3, h4 { color: #995c00; }
+
+h2 { margin-top:80px; }
+
+
+
+.footer {
+  background-color:#726e6e;
+  height:340px;
+  color:white;
+  padding: 20px 3px 20px 3px;
+  margin:0px;
+  line-height: normal;
+}
+
+.footer a{ color:orange; text-decoration:bold !important; } 
+ 
+ 
+ 
+ table{
+   border-spacing:1px;
+   margin-top:80px;
+   margin-bottom:100px !important;
+   margin-left: auto;
+   margin-right: auto;
+   align:center} 
+
+
+ 
+td{ padding: 6px 10px 6px 10px } 
+
+th{ text-align: left; } 
+
+
+```
+
+
 
