@@ -905,7 +905,7 @@ Some estimators will be valid in this context (will accurately capture program e
 
 
   
-## Lab 06
+## Optional Labs
 
 <hr>
   
