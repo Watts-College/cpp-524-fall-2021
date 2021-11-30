@@ -91,10 +91,10 @@ stargazer( m1, m2,
 
 > Calculate the four group means with regression coefficients from **Model (1)**:
 
-* **Q2-a**: b0 = regular urban teachers = **x**  
-* **Q2-b**: b0 + b1 = tfa urban teachers  = **x**  
-* **Q2-c**: b0 + b2 = regular suburban teachers  = **x** 
-* **Q2-d**: b0 + b1 + b2 = tfa surburban teachers  = **x**  
+* **Q2-a**: regular urban teachers = b0 = **?**  
+* **Q2-b**: tfa urban teachers = b0 + b1 = **?**  
+* **Q2-c**: regular suburban teachers = b0 + b2 = **?** 
+* **Q2-d**: tfa surburban teachers = b0 + b1 + b2 = **?**  
 
 --------
 
@@ -118,10 +118,10 @@ tapply( d$score, list(d$teacher,d$school), mean ) %>% round(0) %>% pander()
 
 > Now calculate the four group means with coefficients from **Model (2)**:
 
-* **Q3-a**: b0 = regular urban teachers  = **x** 
-* **Q3-b**: b0 + b1 = tfa urban teachers   = **x**  
-* **Q3-c**: b0 + b2 = regular suburban teachers  = **x**  
-* **Q3-d**: b0 + b1 + b2 + b3 = tfa surburban teachers  = **x** 
+* **Q3-a**: b0 = regular urban teachers  = **?** 
+* **Q3-b**: b0 + b1 = tfa urban teachers   = **?**  
+* **Q3-c**: b0 + b2 = regular suburban teachers  = **?**  
+* **Q3-d**: b0 + b1 + b2 + b3 = tfa surburban teachers  = **?** 
 
 
 
@@ -240,7 +240,7 @@ body{
      margin-right:20%} 
      
 
-h1, h3, h4 { color: #995c00; }
+h1, h2, h3, h4 { color: #995c00; }
 
 h2 { margin-top:80px; }
 
@@ -274,8 +274,9 @@ td{ padding: 6px 10px 6px 10px }
 th{ text-align: left; } 
 
 blockquote {
-    margin-top:40px;
-    border-left: 5px solid #4582ec;
+    margin-top:80px;
+    border-left: 5px solid #995c00;
+    color: #995c00;
 }
 ```
 
