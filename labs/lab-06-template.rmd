@@ -273,7 +273,10 @@ td{ padding: 6px 10px 6px 10px }
 
 th{ text-align: left; } 
 
-
+blockquote {
+    margin-top:40px;
+    border-left: 5px solid #4582ec;
+}
 ```
 
 
