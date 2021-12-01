@@ -514,7 +514,6 @@ stargazer( m, type=s.type,
 
 
 
-![](figures/post-test-only.png)
 
 ```{r, results="asis"}
 dm <- filter( d, 
@@ -542,6 +541,53 @@ stargazer( m, type=s.type,
 Total Gains: T2-T1  
 Trend: C2-C1  
 DID Estimator: [ gains - trend ] = [ (T2-T1) - (C2-C1) ]  
+
+<br>
+<hr>
+<br>
+
+![](figures/synthetic-counterfactual.png)
+
+<br>
+<hr>
+<br>
+
+![](figures/diff-in-diff-test.png)
+
+<br>
+<hr>
+<br>
+
+![](figures/post-test-only.png)
+
+<br>
+<hr>
+<br>
+
+Select data from the treatment and control groups in the pre-treatment and post-treatment period.
+
+Create a dummy for the treatment group and a dummy for the post-treatment period (time2).
+
+```{r, echo=F}
+
+df <- data.frame( 
+       student=rep(c("student_1","...","student_k"),4),
+       group=rep(c("control","treatment","control","treatment"), each=3),
+       time=rep( c("time1","time2"), each=6 ),
+       treat.dummy=rep(c(0,1,0,1),each=3),
+       post.dummy=rep(c(0,1),each=6),
+       post.treat.dummy=rep(c(0,0,0,1),each=3) )
+       
+df %>% pander()
+```
+
+The regression model: 
+
+<br>
+
+$$ y = b_0 + b_1 * treat.dummy + b_2 * post.dummy + b_3 * treat.post.dummy + e $$ 
+
+<br>
 
 ```{r, fig.height=8, fig.width=8, echo=F}
 
@@ -580,26 +626,7 @@ text( rep(x[2:3],each=2), t[2:3,2:3], labels=c("T1","C1","T2","C2"),
 ```
 
 
-Select data from the treatment and control groups in the pre-treatment and post-treatment period.
 
-Create a dummy for the treatment group and a dummy for the post-treatment period (time2).
-
-```{r, echo=F}
-
-df <- data.frame( 
-       student=rep(c("student_1","...","student_k"),4),
-       group=rep(c("control","treatment","control","treatment"), each=3),
-       time=rep( c("time1","time2"), each=6 ),
-       treat.dummy=rep(c(0,1,0,1),each=3),
-       post.dummy=rep(c(0,1),each=6),
-       post.treat.dummy=rep(c(0,0,0,1),each=3) )
-       
-df %>% pander()
-```
-
-Regression model: 
-
-$$ y = b_0 + b_1 * treat.dummy + b_2 * post.dummy + b_3 * treat.post.dummy + e $$ 
 
 ```{r, results="asis"}
 dm <- filter( d, group %in% c("treatment","control") &
