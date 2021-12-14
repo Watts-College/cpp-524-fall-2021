@@ -39,34 +39,11 @@ d %>%
 ```
 
 
+-------------
+
+
 
 ## Question 1
-
-Run baseline model comparing performance of Regular to TFA instructors. Do not control for school geography. 
-
-$score = b_0 + b_1 \cdot tfa.dummy$
-
-
-```{r, results="asis"}
-m0 <- lm( score ~ tfa.dummy, data=d )
-
-stargazer( m0, 
-           type="html", digits=3,
-           intercept.bottom = FALSE,
-           omit.stat = c("ser","f","rsq","adj.rsq") )
-```
-
-
-> Do we find differences in performance across teacher types? 
-
-**ANSWER:**
-
-
-<hr>
-
-
-
-## Question 2
 
 Consider the following models:  
 
@@ -91,10 +68,10 @@ stargazer( m1, m2,
 
 > Calculate the four group means with regression coefficients from **Model (1)**:
 
-* **Q2-a**: regular urban teachers = b0 = **?**  
-* **Q2-b**: tfa urban teachers = b0 + b1 = **?**  
-* **Q2-c**: regular suburban teachers = b0 + b2 = **?** 
-* **Q2-d**: tfa surburban teachers = b0 + b1 + b2 = **?**  
+* **Q1-a**: regular urban teachers = b0 = **?**  
+* **Q1-b**: tfa urban teachers = b0 + b1 = **?**  
+* **Q1-c**: regular suburban teachers = b0 + b2 = **?** 
+* **Q1-d**: tfa surburban teachers = b0 + b1 + b2 = **?**  
 
 --------
 
@@ -114,14 +91,14 @@ tapply( d$score, list(d$teacher,d$school), mean ) %>% round(0) %>% pander()
 
 
 
-## Question 3
+## Question 2
 
 > Now calculate the four group means with coefficients from **Model (2)**:
 
-* **Q3-a**: b0 = regular urban teachers  = **?** 
-* **Q3-b**: b0 + b1 = tfa urban teachers   = **?**  
-* **Q3-c**: b0 + b2 = regular suburban teachers  = **?**  
-* **Q3-d**: b0 + b1 + b2 + b3 = tfa surburban teachers  = **?** 
+* **Q2-a**: b0 = regular urban teachers  = **?** 
+* **Q2-b**: b0 + b1 = tfa urban teachers   = **?**  
+* **Q2-c**: b0 + b2 = regular suburban teachers  = **?**  
+* **Q2-d**: b0 + b1 + b2 + b3 = tfa surburban teachers  = **?** 
 
 
 
@@ -129,12 +106,24 @@ tapply( d$score, list(d$teacher,d$school), mean ) %>% round(0) %>% pander()
 
 **ANSWER:**
 
+----------
+
+
+
+
+
+## Question 3
 
 > Why do we need to include the interaction term to recover the true group means?  
 
 **ANSWER:**
 
 ----------
+
+
+
+
+
 
 
 
@@ -153,6 +142,30 @@ tapply( d$score, list(d$teacher,d$school), mean ) %>% round(0) %>% pander()
 
 ## Question 5
 
+Run baseline model comparing performance of Regular to TFA instructors. Do not control for school geography. 
+
+$score = b_0 + b_1 \cdot tfa.dummy$
+
+
+```{r, results="asis"}
+m0 <- lm( score ~ tfa.dummy, data=d )
+
+stargazer( m0, 
+           type="html", digits=3,
+           intercept.bottom = FALSE,
+           omit.stat = c("ser","f","rsq","adj.rsq") )
+```
+
+
+> Do we find differences in performance across teacher types? Report your decision rules. 
+
+**ANSWER:**
+
+
+
+
+## Question 6
+
 Now run a model comparing teacher performance in urban schools. 
 
 $Model \space (3): \space \space score = b_0 + b_1 \cdot tfa + b_2 \cdot urban + b_3 \cdot tfa \cdot urban$
@@ -169,22 +182,14 @@ stargazer( m3,
 
 
 
-> Q5-a: What does baseline group b0 represent? 
+> Q6-a: What does baseline group b0 represent? 
 
 **ANSWER:** 
 
 
 
 
-> Q5-b: which coefficient represents our hypothesis of interest? 
-
-**ANSWER:** 
-
-
-
-
-
-> Q5-b: What does b3 test? 
+> Q6-b: which coefficient represents our hypothesis of interest? 
 
 **ANSWER:** 
 
@@ -192,17 +197,25 @@ stargazer( m3,
 
 
 
+> Q6-c: What does b3 test? 
+
+**ANSWER:** 
 
 
 
-## Question 6
 
-> Q6-a: which model allows us to test whether Regular instructors perform differently in urban versus suburban schools? 
+
+
+
+
+## Question 7
+
+> Q7-a: which model allows us to test whether Regular instructors perform differently in urban versus suburban schools? 
 
 **ANSWER:**
 
 
-> Q6-b: which model allows us to test whether TFA instructors perform differently in urban versus suburban schools? 
+> Q7-b: which model allows us to test whether TFA instructors perform differently in urban versus suburban schools? 
 
 **ANSWER:**
 

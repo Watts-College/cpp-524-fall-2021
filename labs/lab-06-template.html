@@ -55,7 +55,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -260,6 +259,7 @@ pre code {
 <li><a href="#question-4">Question 4</a></li>
 <li><a href="#question-5">Question 5</a></li>
 <li><a href="#question-6">Question 6</a></li>
+<li><a href="#question-7">Question 7</a></li>
 <li><a href="#challenge-question">Challenge Question</a></li>
 </ul>
 </div>
@@ -391,132 +391,21 @@ pre code {
 </tr>
 </tbody>
 </table>
+<hr />
 </div>
 <div id="question-1" class="section level2">
 <h2>Question 1</h2>
-<p>Run baseline model comparing performance of Regular to TFA instructors. Do not control for school geography.</p>
-<p><span class="math inline">\(score = b_0 + b_1 \cdot tfa.dummy\)</span></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>m0 <span class="ot">&lt;-</span> <span class="fu">lm</span>( score <span class="sc">~</span> tfa.dummy, <span class="at">data=</span>d )</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>( m0, </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">type=</span><span class="st">&quot;html&quot;</span>, <span class="at">digits=</span><span class="dv">3</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">intercept.bottom =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">omit.stat =</span> <span class="fu">c</span>(<span class="st">&quot;ser&quot;</span>,<span class="st">&quot;f&quot;</span>,<span class="st">&quot;rsq&quot;</span>,<span class="st">&quot;adj.rsq&quot;</span>) )</span></code></pre></div>
-<table style="text-align:center">
-<tr>
-<td colspan="2" style="border-bottom: 1px solid black">
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-</td>
-<td>
-<em>Dependent variable:</em>
-</td>
-</tr>
-<tr>
-<td>
-</td>
-<td colspan="1" style="border-bottom: 1px solid black">
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-</td>
-<td>
-score
-</td>
-</tr>
-<tr>
-<td colspan="2" style="border-bottom: 1px solid black">
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-Constant
-</td>
-<td>
-69.668<sup>***</sup>
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-</td>
-<td>
-(0.262)
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-tfa.dummy
-</td>
-<td>
--0.089
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-</td>
-<td>
-(0.371)
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td colspan="2" style="border-bottom: 1px solid black">
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-Observations
-</td>
-<td>
-2,000
-</td>
-</tr>
-<tr>
-<td colspan="2" style="border-bottom: 1px solid black">
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-<em>Note:</em>
-</td>
-<td style="text-align:right">
-<sup><em></sup>p&lt;0.1; <sup><strong></sup>p&lt;0.05; <sup></strong></em></sup>p&lt;0.01
-</td>
-</tr>
-</table>
-<blockquote>
-<p>Do we find differences in performance across teacher types?</p>
-</blockquote>
-<p><strong>ANSWER:</strong></p>
-<hr>
-</div>
-<div id="question-2" class="section level2">
-<h2>Question 2</h2>
 <p>Consider the following models:</p>
 <p><span class="math inline">\(Model \space (1): \space \space score = b_0 + b_1 \cdot tfa + b_2 \cdot suburban\)</span></p>
 <p><span class="math inline">\(Model \space (2): \space \space score = b_0 + b_1 \cdot tfa + b_2 \cdot suburban + b_3 \cdot tfa \cdot suburban\)</span></p>
 <p><em>Note that we use a colon instead of multiplication sign to interact coefficients in the R lm() syntax:</em></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>( score <span class="sc">~</span> tfa.dummy <span class="sc">+</span> sub.dummy, <span class="at">data=</span>d )</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>( score <span class="sc">~</span> tfa.dummy <span class="sc">+</span> sub.dummy <span class="sc">+</span> tfa.dummy<span class="sc">:</span>sub.dummy, <span class="at">data=</span>d )</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>( m1, m2, </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">type=</span><span class="st">&quot;html&quot;</span>, <span class="at">digits=</span><span class="dv">3</span>,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">intercept.bottom =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">omit.stat =</span> <span class="fu">c</span>(<span class="st">&quot;ser&quot;</span>,<span class="st">&quot;f&quot;</span>,<span class="st">&quot;rsq&quot;</span>,<span class="st">&quot;adj.rsq&quot;</span>) )</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>( score <span class="sc">~</span> tfa.dummy <span class="sc">+</span> sub.dummy, <span class="at">data=</span>d )</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>( score <span class="sc">~</span> tfa.dummy <span class="sc">+</span> sub.dummy <span class="sc">+</span> tfa.dummy<span class="sc">:</span>sub.dummy, <span class="at">data=</span>d )</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>( m1, m2, </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">type=</span><span class="st">&quot;html&quot;</span>, <span class="at">digits=</span><span class="dv">3</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">intercept.bottom =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">omit.stat =</span> <span class="fu">c</span>(<span class="st">&quot;ser&quot;</span>,<span class="st">&quot;f&quot;</span>,<span class="st">&quot;rsq&quot;</span>,<span class="st">&quot;adj.rsq&quot;</span>) )</span></code></pre></div>
 <table style="text-align:center">
 <tr>
 <td colspan="3" style="border-bottom: 1px solid black">
@@ -703,12 +592,12 @@ Observations
 <p>Calculate the four group means with regression coefficients from <strong>Model (1)</strong>:</p>
 </blockquote>
 <ul>
-<li><strong>Q2-a</strong>: regular urban teachers = b0 = <strong>?</strong><br />
+<li><strong>Q1-a</strong>: regular urban teachers = b0 = <strong>?</strong><br />
 </li>
-<li><strong>Q2-b</strong>: tfa urban teachers = b0 + b1 = <strong>?</strong><br />
+<li><strong>Q1-b</strong>: tfa urban teachers = b0 + b1 = <strong>?</strong><br />
 </li>
-<li><strong>Q2-c</strong>: regular suburban teachers = b0 + b2 = <strong>?</strong></li>
-<li><strong>Q2-d</strong>: tfa surburban teachers = b0 + b1 + b2 = <strong>?</strong></li>
+<li><strong>Q1-c</strong>: regular suburban teachers = b0 + b2 = <strong>?</strong></li>
+<li><strong>Q1-d</strong>: tfa surburban teachers = b0 + b1 + b2 = <strong>?</strong></li>
 </ul>
 <hr />
 <p><br></p>
@@ -717,7 +606,7 @@ Observations
 </blockquote>
 <p><strong>ANSWER:</strong></p>
 <p>Here is the table of group means for reference:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>( d<span class="sc">$</span>score, <span class="fu">list</span>(d<span class="sc">$</span>teacher,d<span class="sc">$</span>school), mean ) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="fu">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>( d<span class="sc">$</span>score, <span class="fu">list</span>(d<span class="sc">$</span>teacher,d<span class="sc">$</span>school), mean ) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="fu">pander</span>()</span></code></pre></div>
 <table style="width:44%;">
 <colgroup>
 <col width="19%" />
@@ -745,23 +634,27 @@ Observations
 </tbody>
 </table>
 </div>
-<div id="question-3" class="section level2">
-<h2>Question 3</h2>
+<div id="question-2" class="section level2">
+<h2>Question 2</h2>
 <blockquote>
 <p>Now calculate the four group means with coefficients from <strong>Model (2)</strong>:</p>
 </blockquote>
 <ul>
-<li><strong>Q3-a</strong>: b0 = regular urban teachers = <strong>?</strong></li>
-<li><strong>Q3-b</strong>: b0 + b1 = tfa urban teachers = <strong>?</strong><br />
+<li><strong>Q2-a</strong>: b0 = regular urban teachers = <strong>?</strong></li>
+<li><strong>Q2-b</strong>: b0 + b1 = tfa urban teachers = <strong>?</strong><br />
 </li>
-<li><strong>Q3-c</strong>: b0 + b2 = regular suburban teachers = <strong>?</strong><br />
+<li><strong>Q2-c</strong>: b0 + b2 = regular suburban teachers = <strong>?</strong><br />
 </li>
-<li><strong>Q3-d</strong>: b0 + b1 + b2 + b3 = tfa surburban teachers = <strong>?</strong></li>
+<li><strong>Q2-d</strong>: b0 + b1 + b2 + b3 = tfa surburban teachers = <strong>?</strong></li>
 </ul>
 <blockquote>
 <p>Are these means correct?</p>
 </blockquote>
 <p><strong>ANSWER:</strong></p>
+<hr />
+</div>
+<div id="question-3" class="section level2">
+<h2>Question 3</h2>
 <blockquote>
 <p>Why do we need to include the interaction term to recover the true group means?</p>
 </blockquote>
@@ -785,6 +678,117 @@ Observations
 </div>
 <div id="question-5" class="section level2">
 <h2>Question 5</h2>
+<p>Run baseline model comparing performance of Regular to TFA instructors. Do not control for school geography.</p>
+<p><span class="math inline">\(score = b_0 + b_1 \cdot tfa.dummy\)</span></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>m0 <span class="ot">&lt;-</span> <span class="fu">lm</span>( score <span class="sc">~</span> tfa.dummy, <span class="at">data=</span>d )</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>( m0, </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">type=</span><span class="st">&quot;html&quot;</span>, <span class="at">digits=</span><span class="dv">3</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">intercept.bottom =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">omit.stat =</span> <span class="fu">c</span>(<span class="st">&quot;ser&quot;</span>,<span class="st">&quot;f&quot;</span>,<span class="st">&quot;rsq&quot;</span>,<span class="st">&quot;adj.rsq&quot;</span>) )</span></code></pre></div>
+<table style="text-align:center">
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="1" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+score
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+69.668<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.262)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+tfa.dummy
+</td>
+<td>
+-0.089
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.371)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+2,000
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td style="text-align:right">
+<sup><em></sup>p&lt;0.1; <sup><strong></sup>p&lt;0.05; <sup></strong></em></sup>p&lt;0.01
+</td>
+</tr>
+</table>
+<blockquote>
+<p>Do we find differences in performance across teacher types? Report your decision rules.</p>
+</blockquote>
+<p><strong>ANSWER:</strong></p>
+</div>
+<div id="question-6" class="section level2">
+<h2>Question 6</h2>
 <p>Now run a model comparing teacher performance in urban schools.</p>
 <p><span class="math inline">\(Model \space (3): \space \space score = b_0 + b_1 \cdot tfa + b_2 \cdot urban + b_3 \cdot tfa \cdot urban\)</span></p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">lm</span>( score <span class="sc">~</span> tfa.dummy <span class="sc">+</span> urb.dummy <span class="sc">+</span> tfa.dummy<span class="sc">:</span>urb.dummy, <span class="at">data=</span>d )</span>
@@ -932,26 +936,26 @@ Observations
 </tr>
 </table>
 <blockquote>
-<p>Q5-a: What does baseline group b0 represent?</p>
+<p>Q6-a: What does baseline group b0 represent?</p>
 </blockquote>
 <p><strong>ANSWER:</strong></p>
 <blockquote>
-<p>Q5-b: which coefficient represents our hypothesis of interest?</p>
+<p>Q6-b: which coefficient represents our hypothesis of interest?</p>
 </blockquote>
 <p><strong>ANSWER:</strong></p>
 <blockquote>
-<p>Q5-b: What does b3 test?</p>
+<p>Q6-c: What does b3 test?</p>
 </blockquote>
 <p><strong>ANSWER:</strong></p>
 </div>
-<div id="question-6" class="section level2">
-<h2>Question 6</h2>
+<div id="question-7" class="section level2">
+<h2>Question 7</h2>
 <blockquote>
-<p>Q6-a: which model allows us to test whether Regular instructors perform differently in urban versus suburban schools?</p>
+<p>Q7-a: which model allows us to test whether Regular instructors perform differently in urban versus suburban schools?</p>
 </blockquote>
 <p><strong>ANSWER:</strong></p>
 <blockquote>
-<p>Q6-b: which model allows us to test whether TFA instructors perform differently in urban versus suburban schools?</p>
+<p>Q7-b: which model allows us to test whether TFA instructors perform differently in urban versus suburban schools?</p>
 </blockquote>
 <p><strong>ANSWER:</strong></p>
 </div>
