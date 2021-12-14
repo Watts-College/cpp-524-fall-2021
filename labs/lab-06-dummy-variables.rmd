@@ -205,7 +205,10 @@ polygon(x=c(1,1,2,2), y=c(57,75,75,66),
 points( 2, 57, cex=2, col="steelblue" )
 ```
 
-This is an example where we have all of the variables we need to fit a model properly (if we use the correct model we estimate the group means very precisely), but we need to use proper specification or we will get the wrong answer because of constraints we have imposed on the data, not because of poor data or bias. 
+Recall the Seven Sins of Regression from CPP 523. 
+
+This is another example of **specification bias**, which occurs when we have all of the variables we need to fit a model properly but we need to use the right specification or we will get poor coefficient values because of constraints we have imposed on the data, not because of poor data or omitted variable bias. 
+
 
 <br>
 <hr>
