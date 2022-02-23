@@ -192,7 +192,7 @@ How does the interaction allow us to fit the data with a polygon instead of a pa
 
 ```{r,echo=F}
 plot( c(1,1,2,2), c(57,75,66,75),
-      ylim=c(55,80), xlim=c(0.5,2.5), 
+      ylim=c(55,85), xlim=c(0.5,2.5), 
       pch=19, col="steelblue", cex=2,
       bty="n", xaxt="n", xlab="",
       ylab="Ave Student Score" )
@@ -202,7 +202,11 @@ axis( side=1, at=c(1,2), labels=c("Reg","TFA") )
 polygon(x=c(1,1,2,2), y=c(57,75,75,66), 
         border="steelblue", col = NA )
 
-points( 2, 57, cex=2, col="steelblue" )
+points( 2, 84, cex=2, col="steelblue" )
+segments( x0=1, x1=2, y0=75, y1=84, lty=2, col="steelblue")
+
+text( 2, 84, "b0+b1+b2", col="steelblue", pos=4 )
+text( 2, 75, "b0+b1+b2+b3", col="steelblue", pos=4 )
 ```
 
 Recall the Seven Sins of Regression from CPP 523. 
