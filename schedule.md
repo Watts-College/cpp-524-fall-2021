@@ -43,6 +43,9 @@ Submit Button - <a class="uk-button uk-button-primary" href="{{page.canvas.assig
 <div class = "uk-container uk-container-small">
   
 <br><br>
+
+<a class="uk-button uk-button-default" class="uk-align-center" onclick="onlyprint();">PRINT THE SYLLABUS</a>
+
 <br><br>
 
 **COURSE CONTENT:**
