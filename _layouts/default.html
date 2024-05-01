@@ -84,9 +84,9 @@
  
  
  
-<div class = "uk-container">
+<article class="uk-article">
 {{content}}
-</div>
+</article>
  
     {% include offcanvas.html %}
 
@@ -189,8 +189,8 @@
             divC.setAttribute("display","block");
             var divContents = "<br>"+divC.innerHTML;
             var printWindow = window.open('', '', 'height=400,width=800');
-            printWindow.document.write('<html><head><title>Course Syllabus</title>');
-            printWindow.document.write('</head><body >');
+            printWindow.document.write('<html><head><title>Program Eval II</title>');
+            printWindow.document.write('</head><body>');
             printWindow.document.write(divContents);
             printWindow.document.write('</body></html>');
             printWindow.document.close();
