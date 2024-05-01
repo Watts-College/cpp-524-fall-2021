@@ -176,7 +176,13 @@
             var div = document.getElementsByTagName("article")[0];
             var t = document.getElementsByTagName('');
             var divC = document.getElementsByTagName("article")[0].cloneNode(true);
+   
+            var myImg = document.getElementByTagName("img");
+            myImg.style.max-width = "400px";
 
+            var myIframe = document.getElementByTagName("iframe");
+            myIframe.style.max-width = "200px";
+   
             var secs = divC.getElementsByTagName("section");
 
             for(var j=0;j<secs.length-1;j++){
@@ -187,6 +193,7 @@
               h1[0].appendChild(hr);
             }
             divC.setAttribute("display","block");
+            
             var divContents = "<br>"+divC.innerHTML;
             var printWindow = window.open('', '', 'height=400,width=800');
             printWindow.document.write('<html><head><title>Program Eval II</title>');
