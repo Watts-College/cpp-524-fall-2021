@@ -23,8 +23,8 @@
         text-shadow: none !important;
     }
 
-    a,
-    a:visited { text-decoration: underline; }
+    nav{ display: none; }
+    a, a:visited { text-decoration: underline; }
 
     pre,
     blockquote {
@@ -37,9 +37,9 @@
     tr,
     img { page-break-inside: avoid; }
 
-    img { max-width: 100% !important; }
+    img { max-width: 60% !important; }
 
-    @page { margin: 0.5cm; }
+    @page { margin: 1.5cm; }
 
     p,
     h2,
