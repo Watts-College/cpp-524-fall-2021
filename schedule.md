@@ -44,7 +44,7 @@ Submit Button - <a class="uk-button uk-button-primary" href="{{page.canvas.assig
   
 <br><br>
 
-<a class="uk-button uk-button-default" class="uk-align-center" onclick="onlyprint();">PRINT THE SYLLABUS</a>
+<a class="uk-button uk-button-default" class="uk-align-center" onclick="onlyprint();">PRINT THE SCHEDULE</a>
 
 <br><br>
 
